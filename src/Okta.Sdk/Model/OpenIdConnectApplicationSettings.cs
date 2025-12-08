@@ -144,10 +144,11 @@ namespace Okta.Sdk.Model
         public ApplicationSettingsNotifications Notifications { get; set; }
 
         /// <summary>
-        /// Gets or Sets App
+        /// OpenID Connect application instance properties
         /// </summary>
+        /// <value>OpenID Connect application instance properties</value>
         [DataMember(Name = "app", EmitDefaultValue = true)]
-        public ApplicationSettingsApplication App { get; set; }
+        public Dictionary<string, string> App { get; set; }
 
         /// <summary>
         /// Gets or Sets OauthClient
@@ -236,8 +237,9 @@ namespace Okta.Sdk.Model
                 ) && 
                 (
                     this.App == input.App ||
-                    (this.App != null &&
-                    this.App.Equals(input.App))
+                    this.App != null &&
+                    input.App != null &&
+                    this.App.SequenceEqual(input.App)
                 ) && 
                 (
                     this.OauthClient == input.OauthClient ||
