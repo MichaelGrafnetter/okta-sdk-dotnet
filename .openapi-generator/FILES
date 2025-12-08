@@ -19,6 +19,9 @@ docs/AccessPolicyRuleConditions.md
 docs/AccessPolicyRuleCustomCondition.md
 docs/AcsEndpoint.md
 docs/Actions.md
+docs/ActiveDirectoryApplication.md
+docs/ActiveDirectoryApplicationSettings.md
+docs/ActiveDirectoryApplicationSettingsApplication.md
 docs/ActiveDirectoryGroupScope.md
 docs/ActiveDirectoryGroupType.md
 docs/AddGroupRequest.md
@@ -625,6 +628,7 @@ docs/GroupSchemaBasePropertiesDescription.md
 docs/GroupSchemaBasePropertiesName.md
 docs/GroupSchemaCustom.md
 docs/GroupSchemaDefinitions.md
+docs/GroupSource.md
 docs/GroupType.md
 docs/GroupsLink.md
 docs/HelpLink.md
@@ -2027,6 +2031,9 @@ src/Okta.Sdk/Model/AccessPolicyRuleConditions.cs
 src/Okta.Sdk/Model/AccessPolicyRuleCustomCondition.cs
 src/Okta.Sdk/Model/AcsEndpoint.cs
 src/Okta.Sdk/Model/Actions.cs
+src/Okta.Sdk/Model/ActiveDirectoryApplication.cs
+src/Okta.Sdk/Model/ActiveDirectoryApplicationSettings.cs
+src/Okta.Sdk/Model/ActiveDirectoryApplicationSettingsApplication.cs
 src/Okta.Sdk/Model/ActiveDirectoryGroupScope.cs
 src/Okta.Sdk/Model/ActiveDirectoryGroupType.cs
 src/Okta.Sdk/Model/AddGroupRequest.cs
@@ -2584,6 +2591,7 @@ src/Okta.Sdk/Model/GroupSchemaBasePropertiesDescription.cs
 src/Okta.Sdk/Model/GroupSchemaBasePropertiesName.cs
 src/Okta.Sdk/Model/GroupSchemaCustom.cs
 src/Okta.Sdk/Model/GroupSchemaDefinitions.cs
+src/Okta.Sdk/Model/GroupSource.cs
 src/Okta.Sdk/Model/GroupType.cs
 src/Okta.Sdk/Model/GroupsLink.cs
 src/Okta.Sdk/Model/HelpLink.cs

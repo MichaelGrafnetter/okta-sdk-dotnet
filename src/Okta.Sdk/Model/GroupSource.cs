@@ -32,32 +32,28 @@ namespace Okta.Sdk.Model
 {
     /// <summary>
     /// Template: ModelGeneric
-    /// Google app instance properties
+    /// GroupSource
     /// </summary>
-    [DataContract(Name = "GoogleApplicationSettingsApplication")]
+    [DataContract(Name = "Group_source")]
     
-    public partial class GoogleApplicationSettingsApplication : Dictionary<String, string>, IEquatable<GoogleApplicationSettingsApplication>
+    public partial class GroupSource : IEquatable<GroupSource>
     {
-        /// <summary>
-        /// Initializes a new instance of the <see cref="GoogleApplicationSettingsApplication" /> class.
-        /// </summary>
-        [JsonConstructorAttribute]
-        public GoogleApplicationSettingsApplication() { }
         
         /// <summary>
-        /// Your Google company domain
+        /// Identifier of the application which synchronizes the group
         /// </summary>
-        /// <value>Your Google company domain</value>
-        [DataMember(Name = "domain", EmitDefaultValue = true)]
-        public string Domain { get; set; }
+        /// <value>Identifier of the application which synchronizes the group</value>
+        [DataMember(Name = "id", EmitDefaultValue = true)]
+        public string Id { get; private set; }
 
         /// <summary>
-        /// RPID
+        /// Returns false as Id should not be serialized given that it's read-only.
         /// </summary>
-        /// <value>RPID</value>
-        [DataMember(Name = "rpId", EmitDefaultValue = true)]
-        public string RpId { get; set; }
-
+        /// <returns>false (boolean)</returns>
+        public bool ShouldSerializeId()
+        {
+            return false;
+        }
         /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
@@ -65,10 +61,8 @@ namespace Okta.Sdk.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class GoogleApplicationSettingsApplication {\n");
-            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
-            sb.Append("  Domain: ").Append(Domain).Append("\n");
-            sb.Append("  RpId: ").Append(RpId).Append("\n");
+            sb.Append("class GroupSource {\n");
+            sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -77,7 +71,7 @@ namespace Okta.Sdk.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public string ToJson()
+        public virtual string ToJson()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
@@ -89,30 +83,25 @@ namespace Okta.Sdk.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as GoogleApplicationSettingsApplication);
+            return this.Equals(input as GroupSource);
         }
 
         /// <summary>
-        /// Returns true if GoogleApplicationSettingsApplication instances are equal
+        /// Returns true if GroupSource instances are equal
         /// </summary>
-        /// <param name="input">Instance of GoogleApplicationSettingsApplication to be compared</param>
+        /// <param name="input">Instance of GroupSource to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(GoogleApplicationSettingsApplication input)
+        public bool Equals(GroupSource input)
         {
             if (input == null)
             {
                 return false;
             }
-            return base.Equals(input) && 
+            return 
                 (
-                    this.Domain == input.Domain ||
-                    (this.Domain != null &&
-                    this.Domain.Equals(input.Domain))
-                ) && base.Equals(input) && 
-                (
-                    this.RpId == input.RpId ||
-                    (this.RpId != null &&
-                    this.RpId.Equals(input.RpId))
+                    this.Id == input.Id ||
+                    (this.Id != null &&
+                    this.Id.Equals(input.Id))
                 );
         }
 
@@ -124,15 +113,11 @@ namespace Okta.Sdk.Model
         {
             unchecked // Overflow is fine, just wrap
             {
-                int hashCode = base.GetHashCode();
+                int hashCode = 41;
                 
-                if (this.Domain != null)
+                if (this.Id != null)
                 {
-                    hashCode = (hashCode * 59) + this.Domain.GetHashCode();
-                }
-                if (this.RpId != null)
-                {
-                    hashCode = (hashCode * 59) + this.RpId.GetHashCode();
+                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
                 }
                 return hashCode;
             }

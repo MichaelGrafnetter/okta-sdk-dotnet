@@ -36,7 +36,7 @@ namespace Okta.Sdk.Model
     /// </summary>
     [DataContract(Name = "SwaApplicationSettingsApplication")]
     
-    public partial class SwaApplicationSettingsApplication : IEquatable<SwaApplicationSettingsApplication>
+    public partial class SwaApplicationSettingsApplication : Dictionary<String, string>, IEquatable<SwaApplicationSettingsApplication>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="SwaApplicationSettingsApplication" /> class.
@@ -129,6 +129,7 @@ namespace Okta.Sdk.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class SwaApplicationSettingsApplication {\n");
+            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
             sb.Append("  ButtonField: ").Append(ButtonField).Append("\n");
             sb.Append("  ButtonSelector: ").Append(ButtonSelector).Append("\n");
             sb.Append("  ExtraFieldSelector: ").Append(ExtraFieldSelector).Append("\n");
@@ -148,7 +149,7 @@ namespace Okta.Sdk.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
@@ -174,57 +175,57 @@ namespace Okta.Sdk.Model
             {
                 return false;
             }
-            return 
+            return base.Equals(input) && 
                 (
                     this.ButtonField == input.ButtonField ||
                     (this.ButtonField != null &&
                     this.ButtonField.Equals(input.ButtonField))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.ButtonSelector == input.ButtonSelector ||
                     (this.ButtonSelector != null &&
                     this.ButtonSelector.Equals(input.ButtonSelector))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.ExtraFieldSelector == input.ExtraFieldSelector ||
                     (this.ExtraFieldSelector != null &&
                     this.ExtraFieldSelector.Equals(input.ExtraFieldSelector))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.ExtraFieldValue == input.ExtraFieldValue ||
                     (this.ExtraFieldValue != null &&
                     this.ExtraFieldValue.Equals(input.ExtraFieldValue))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.LoginUrlRegex == input.LoginUrlRegex ||
                     (this.LoginUrlRegex != null &&
                     this.LoginUrlRegex.Equals(input.LoginUrlRegex))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.PasswordField == input.PasswordField ||
                     (this.PasswordField != null &&
                     this.PasswordField.Equals(input.PasswordField))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.PasswordSelector == input.PasswordSelector ||
                     (this.PasswordSelector != null &&
                     this.PasswordSelector.Equals(input.PasswordSelector))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.TargetURL == input.TargetURL ||
                     (this.TargetURL != null &&
                     this.TargetURL.Equals(input.TargetURL))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.Url == input.Url ||
                     (this.Url != null &&
                     this.Url.Equals(input.Url))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.UsernameField == input.UsernameField ||
                     (this.UsernameField != null &&
                     this.UsernameField.Equals(input.UsernameField))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.UserNameSelector == input.UserNameSelector ||
                     (this.UserNameSelector != null &&
@@ -240,7 +241,7 @@ namespace Okta.Sdk.Model
         {
             unchecked // Overflow is fine, just wrap
             {
-                int hashCode = 41;
+                int hashCode = base.GetHashCode();
                 
                 if (this.ButtonField != null)
                 {

@@ -38,6 +38,7 @@ namespace Okta.Sdk.Model
     [DataContract(Name = "Application")]
     [JsonConverter(typeof(JsonSubtypes), "SignOnMode")]
     [JsonSubtypes.KnownSubType(typeof(AutoLoginApplication), "AUTO_LOGIN")]
+    [JsonSubtypes.KnownSubType(typeof(ActiveDirectoryApplication), "ActiveDirectoryApplication")]
     [JsonSubtypes.KnownSubType(typeof(AutoLoginApplication), "AutoLoginApplication")]
     [JsonSubtypes.KnownSubType(typeof(BasicAuthApplication), "BASIC_AUTH")]
     [JsonSubtypes.KnownSubType(typeof(BookmarkApplication), "BOOKMARK")]

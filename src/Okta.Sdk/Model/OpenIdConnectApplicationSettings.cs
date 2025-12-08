@@ -144,6 +144,12 @@ namespace Okta.Sdk.Model
         public ApplicationSettingsNotifications Notifications { get; set; }
 
         /// <summary>
+        /// Gets or Sets App
+        /// </summary>
+        [DataMember(Name = "app", EmitDefaultValue = true)]
+        public ApplicationSettingsApplication App { get; set; }
+
+        /// <summary>
         /// Gets or Sets OauthClient
         /// </summary>
         [DataMember(Name = "oauthClient", EmitDefaultValue = true)]
@@ -163,6 +169,7 @@ namespace Okta.Sdk.Model
             sb.Append("  InlineHookId: ").Append(InlineHookId).Append("\n");
             sb.Append("  Notes: ").Append(Notes).Append("\n");
             sb.Append("  Notifications: ").Append(Notifications).Append("\n");
+            sb.Append("  App: ").Append(App).Append("\n");
             sb.Append("  OauthClient: ").Append(OauthClient).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -228,6 +235,11 @@ namespace Okta.Sdk.Model
                     this.Notifications.Equals(input.Notifications))
                 ) && 
                 (
+                    this.App == input.App ||
+                    (this.App != null &&
+                    this.App.Equals(input.App))
+                ) && 
+                (
                     this.OauthClient == input.OauthClient ||
                     (this.OauthClient != null &&
                     this.OauthClient.Equals(input.OauthClient))
@@ -264,6 +276,10 @@ namespace Okta.Sdk.Model
                 if (this.Notifications != null)
                 {
                     hashCode = (hashCode * 59) + this.Notifications.GetHashCode();
+                }
+                if (this.App != null)
+                {
+                    hashCode = (hashCode * 59) + this.App.GetHashCode();
                 }
                 if (this.OauthClient != null)
                 {

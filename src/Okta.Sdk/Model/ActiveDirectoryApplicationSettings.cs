@@ -32,11 +32,11 @@ namespace Okta.Sdk.Model
 {
     /// <summary>
     /// Template: ModelGeneric
-    /// SamlApplicationSettings
+    /// ActiveDirectoryApplicationSettings
     /// </summary>
-    [DataContract(Name = "SamlApplicationSettings")]
+    [DataContract(Name = "ActiveDirectoryApplicationSettings")]
     
-    public partial class SamlApplicationSettings : IEquatable<SamlApplicationSettings>
+    public partial class ActiveDirectoryApplicationSettings : IEquatable<ActiveDirectoryApplicationSettings>
     {
         /// <summary>
         /// The Governance Engine opt-in status for the app
@@ -144,17 +144,16 @@ namespace Okta.Sdk.Model
         public ApplicationSettingsNotifications Notifications { get; set; }
 
         /// <summary>
-        /// SAML application instance properties
+        /// Gets or Sets App
         /// </summary>
-        /// <value>SAML application instance properties</value>
         [DataMember(Name = "app", EmitDefaultValue = true)]
-        public Dictionary<string, string> App { get; set; }
+        public ActiveDirectoryApplicationSettingsApplication App { get; set; }
 
         /// <summary>
-        /// Gets or Sets SignOn
+        /// Gets or Sets ManualProvisioning
         /// </summary>
-        [DataMember(Name = "signOn", EmitDefaultValue = true)]
-        public SamlApplicationSettingsSignOn SignOn { get; set; }
+        [DataMember(Name = "manualProvisioning", EmitDefaultValue = true)]
+        public bool ManualProvisioning { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -163,7 +162,7 @@ namespace Okta.Sdk.Model
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            sb.Append("class SamlApplicationSettings {\n");
+            sb.Append("class ActiveDirectoryApplicationSettings {\n");
             sb.Append("  EmOptInStatus: ").Append(EmOptInStatus).Append("\n");
             sb.Append("  IdentityStoreId: ").Append(IdentityStoreId).Append("\n");
             sb.Append("  ImplicitAssignment: ").Append(ImplicitAssignment).Append("\n");
@@ -171,7 +170,7 @@ namespace Okta.Sdk.Model
             sb.Append("  Notes: ").Append(Notes).Append("\n");
             sb.Append("  Notifications: ").Append(Notifications).Append("\n");
             sb.Append("  App: ").Append(App).Append("\n");
-            sb.Append("  SignOn: ").Append(SignOn).Append("\n");
+            sb.Append("  ManualProvisioning: ").Append(ManualProvisioning).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -192,15 +191,15 @@ namespace Okta.Sdk.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as SamlApplicationSettings);
+            return this.Equals(input as ActiveDirectoryApplicationSettings);
         }
 
         /// <summary>
-        /// Returns true if SamlApplicationSettings instances are equal
+        /// Returns true if ActiveDirectoryApplicationSettings instances are equal
         /// </summary>
-        /// <param name="input">Instance of SamlApplicationSettings to be compared</param>
+        /// <param name="input">Instance of ActiveDirectoryApplicationSettings to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(SamlApplicationSettings input)
+        public bool Equals(ActiveDirectoryApplicationSettings input)
         {
             if (input == null)
             {
@@ -237,14 +236,12 @@ namespace Okta.Sdk.Model
                 ) && 
                 (
                     this.App == input.App ||
-                    this.App != null &&
-                    input.App != null &&
-                    this.App.SequenceEqual(input.App)
+                    (this.App != null &&
+                    this.App.Equals(input.App))
                 ) && 
                 (
-                    this.SignOn == input.SignOn ||
-                    (this.SignOn != null &&
-                    this.SignOn.Equals(input.SignOn))
+                    this.ManualProvisioning == input.ManualProvisioning ||
+                    this.ManualProvisioning.Equals(input.ManualProvisioning)
                 );
         }
 
@@ -283,10 +280,7 @@ namespace Okta.Sdk.Model
                 {
                     hashCode = (hashCode * 59) + this.App.GetHashCode();
                 }
-                if (this.SignOn != null)
-                {
-                    hashCode = (hashCode * 59) + this.SignOn.GetHashCode();
-                }
+                hashCode = (hashCode * 59) + this.ManualProvisioning.GetHashCode();
                 return hashCode;
             }
         }

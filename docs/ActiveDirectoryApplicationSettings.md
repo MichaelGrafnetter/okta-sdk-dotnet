@@ -1,4 +1,4 @@
-# Okta.Sdk.Model.OpenIdConnectApplicationSettings
+# Okta.Sdk.Model.ActiveDirectoryApplicationSettings
 
 ## Properties
 
@@ -10,8 +10,8 @@ Name | Type | Description | Notes
 **InlineHookId** | **string** | Identifier of an inline hook. Inline hooks are outbound calls from Okta to your own custom code, triggered at specific points in Okta process flows. They allow you to integrate custom functionality into those flows. See [Inline hooks](/openapi/okta-management/management/tag/InlineHook/). | [optional] 
 **Notes** | [**ApplicationSettingsNotes**](ApplicationSettingsNotes.md) |  | [optional] 
 **Notifications** | [**ApplicationSettingsNotifications**](ApplicationSettingsNotifications.md) |  | [optional] 
-**App** | [**ApplicationSettingsApplication**](ApplicationSettingsApplication.md) |  | [optional] 
-**OauthClient** | [**OpenIdConnectApplicationSettingsClient**](OpenIdConnectApplicationSettingsClient.md) |  | [optional] 
+**App** | [**ActiveDirectoryApplicationSettingsApplication**](ActiveDirectoryApplicationSettingsApplication.md) |  | [optional] 
+**ManualProvisioning** | **bool** |  | [optional] [default to false]
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
