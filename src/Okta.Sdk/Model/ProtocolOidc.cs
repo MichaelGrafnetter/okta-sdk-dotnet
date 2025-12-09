@@ -26,6 +26,7 @@ using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
+using JsonSubTypes;
 using OpenAPIDateConverter = Okta.Sdk.Client.OpenAPIDateConverter;
 
 namespace Okta.Sdk.Model
@@ -35,47 +36,20 @@ namespace Okta.Sdk.Model
     /// Protocol settings for authentication using the [OpenID Connect Protocol](http://openid.net/specs/openid-connect-core-1_0.html#CodeFlowAuth)
     /// </summary>
     [DataContract(Name = "ProtocolOidc")]
+    [JsonConverter(typeof(JsonSubtypes), "Type")]
+    [JsonSubtypes.KnownSubType(typeof(ProtocolIdVerification), "ID_PROOFING")]
+    [JsonSubtypes.KnownSubType(typeof(ProtocolMtls), "MTLS")]
+    [JsonSubtypes.KnownSubType(typeof(ProtocolOAuth), "OAUTH2")]
+    [JsonSubtypes.KnownSubType(typeof(ProtocolOidc), "OIDC")]
+    [JsonSubtypes.KnownSubType(typeof(ProtocolSaml), "SAML2")]
     
-    public partial class ProtocolOidc : IEquatable<ProtocolOidc>
+    public partial class ProtocolOidc : IdentityProviderProtocol, IEquatable<ProtocolOidc>
     {
         /// <summary>
-        /// OpenID Connect Authorization Code flow
+        /// Initializes a new instance of the <see cref="ProtocolOidc" /> class.
         /// </summary>
-        /// <value>OpenID Connect Authorization Code flow</value>
-        [JsonConverter(typeof(StringEnumSerializingConverter))]
-        public sealed class TypeEnum : StringEnum
-        {
-            /// <summary>
-            /// StringEnum OIDC for value: OIDC
-            /// </summary>
-            
-            public static TypeEnum OIDC = new TypeEnum("OIDC");
-
-
-            /// <summary>
-            /// Implicit operator declaration to accept and convert a string value as a <see cref="TypeEnum"/>
-            /// </summary>
-            /// <param name="value">The value to use</param>
-            public static implicit operator TypeEnum(string value) => new TypeEnum(value);
-
-            /// <summary>
-            /// Creates a new <see cref="Type"/> instance.
-            /// </summary>
-            /// <param name="value">The value to use.</param>
-            public TypeEnum(string value)
-                : base(value)
-            {
-            }
-        }
-
-
-        /// <summary>
-        /// OpenID Connect Authorization Code flow
-        /// </summary>
-        /// <value>OpenID Connect Authorization Code flow</value>
-        [DataMember(Name = "type", EmitDefaultValue = true)]
-        
-        public TypeEnum Type { get; set; }
+        [JsonConstructorAttribute]
+        public ProtocolOidc() { }
         
         /// <summary>
         /// Gets or Sets Algorithms
@@ -123,13 +97,13 @@ namespace Okta.Sdk.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class ProtocolOidc {\n");
+            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
             sb.Append("  Algorithms: ").Append(Algorithms).Append("\n");
             sb.Append("  Credentials: ").Append(Credentials).Append("\n");
             sb.Append("  Endpoints: ").Append(Endpoints).Append("\n");
             sb.Append("  OktaIdpOrgUrl: ").Append(OktaIdpOrgUrl).Append("\n");
             sb.Append("  Scopes: ").Append(Scopes).Append("\n");
             sb.Append("  Settings: ").Append(Settings).Append("\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -138,7 +112,7 @@ namespace Okta.Sdk.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public override string ToJson()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
@@ -164,41 +138,37 @@ namespace Okta.Sdk.Model
             {
                 return false;
             }
-            return 
+            return base.Equals(input) && 
                 (
                     this.Algorithms == input.Algorithms ||
                     (this.Algorithms != null &&
                     this.Algorithms.Equals(input.Algorithms))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.Credentials == input.Credentials ||
                     (this.Credentials != null &&
                     this.Credentials.Equals(input.Credentials))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.Endpoints == input.Endpoints ||
                     (this.Endpoints != null &&
                     this.Endpoints.Equals(input.Endpoints))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.OktaIdpOrgUrl == input.OktaIdpOrgUrl ||
                     (this.OktaIdpOrgUrl != null &&
                     this.OktaIdpOrgUrl.Equals(input.OktaIdpOrgUrl))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.Scopes == input.Scopes ||
                     this.Scopes != null &&
                     input.Scopes != null &&
                     this.Scopes.SequenceEqual(input.Scopes)
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.Settings == input.Settings ||
                     (this.Settings != null &&
                     this.Settings.Equals(input.Settings))
-                ) && 
-                (
-                    this.Type == input.Type ||
-                    this.Type.Equals(input.Type)
                 );
         }
 
@@ -210,7 +180,7 @@ namespace Okta.Sdk.Model
         {
             unchecked // Overflow is fine, just wrap
             {
-                int hashCode = 41;
+                int hashCode = base.GetHashCode();
                 
                 if (this.Algorithms != null)
                 {
@@ -235,10 +205,6 @@ namespace Okta.Sdk.Model
                 if (this.Settings != null)
                 {
                     hashCode = (hashCode * 59) + this.Settings.GetHashCode();
-                }
-                if (this.Type != null)
-                {
-                    hashCode = (hashCode * 59) + this.Type.GetHashCode();
                 }
                 return hashCode;
             }

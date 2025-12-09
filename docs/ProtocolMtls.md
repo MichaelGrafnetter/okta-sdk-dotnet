@@ -5,9 +5,9 @@ Protocol settings for the [MTLS Protocol](https://tools.ietf.org/html/rfc5246#se
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Type** | [**IdentityProviderProtocolType**](IdentityProviderProtocolType.md) |  | 
 **Credentials** | [**MtlsCredentials**](MtlsCredentials.md) |  | [optional] 
 **Endpoints** | [**MtlsEndpoints**](MtlsEndpoints.md) |  | [optional] 
-**Type** | **string** | Mutual TLS | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

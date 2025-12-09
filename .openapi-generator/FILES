@@ -710,6 +710,7 @@ docs/IdentityProviderPolicyProvider.md
 docs/IdentityProviderPolicyRuleCondition.md
 docs/IdentityProviderProperties.md
 docs/IdentityProviderProtocol.md
+docs/IdentityProviderProtocolType.md
 docs/IdentityProviderSigningKeysApi.md
 docs/IdentityProviderType.md
 docs/IdentityProviderUsersApi.md
@@ -2670,6 +2671,7 @@ src/Okta.Sdk/Model/IdentityProviderPolicyProvider.cs
 src/Okta.Sdk/Model/IdentityProviderPolicyRuleCondition.cs
 src/Okta.Sdk/Model/IdentityProviderProperties.cs
 src/Okta.Sdk/Model/IdentityProviderProtocol.cs
+src/Okta.Sdk/Model/IdentityProviderProtocolType.cs
 src/Okta.Sdk/Model/IdentityProviderType.cs
 src/Okta.Sdk/Model/IdentitySourceGroupMembershipsDeleteProfileInner.cs
 src/Okta.Sdk/Model/IdentitySourceGroupMembershipsUpsertProfileInner.cs

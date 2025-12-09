@@ -5,12 +5,12 @@ Protocol settings for the [SAML 2.0 Authentication Request Protocol](http://docs
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**Type** | [**IdentityProviderProtocolType**](IdentityProviderProtocolType.md) |  | 
 **Algorithms** | [**SamlAlgorithms**](SamlAlgorithms.md) |  | [optional] 
 **Credentials** | [**SamlCredentials**](SamlCredentials.md) |  | [optional] 
 **Endpoints** | [**SamlEndpoints**](SamlEndpoints.md) |  | [optional] 
 **RelayState** | [**SamlRelayState**](SamlRelayState.md) |  | [optional] 
 **Settings** | [**SamlSettings**](SamlSettings.md) |  | [optional] 
-**Type** | **string** | SAML 2.0 protocol | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
