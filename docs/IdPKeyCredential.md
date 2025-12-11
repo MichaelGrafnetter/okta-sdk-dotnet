@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **Kty** | **string** | Identifies the cryptographic algorithm family used with the key | [optional] 
 **LastUpdated** | **DateTimeOffset** | Timestamp when the object was last updated | [optional] [readonly] 
 **N** | **string** | The modulus value for the RSA public key | [optional] 
-**Use** | **string** | Intended use of the public key | [optional] 
+**Use** | **string** | The intended use for the key. | [optional] 
 **X5c** | **List&lt;string&gt;** | Base64-encoded X.509 certificate chain with DER encoding | [optional] 
 **X5tS256** | **string** | Base64url-encoded SHA-256 thumbprint of the DER encoding of an X.509 certificate | [optional] 
 

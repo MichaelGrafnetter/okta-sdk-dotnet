@@ -38,6 +38,50 @@ namespace Okta.Sdk.Model
     public partial class IdPKeyCredential : IEquatable<IdPKeyCredential>
     
     {
+        /// <summary>
+        /// The intended use for the key.
+        /// </summary>
+        /// <value>The intended use for the key.</value>
+        [JsonConverter(typeof(StringEnumSerializingConverter))]
+        public sealed class UseEnum : StringEnum
+        {
+            /// <summary>
+            /// StringEnum Enc for value: enc
+            /// </summary>
+            
+            public static UseEnum Enc = new UseEnum("enc");
+
+            /// <summary>
+            /// StringEnum Sig for value: sig
+            /// </summary>
+            
+            public static UseEnum Sig = new UseEnum("sig");
+
+
+            /// <summary>
+            /// Implicit operator declaration to accept and convert a string value as a <see cref="UseEnum"/>
+            /// </summary>
+            /// <param name="value">The value to use</param>
+            public static implicit operator UseEnum(string value) => new UseEnum(value);
+
+            /// <summary>
+            /// Creates a new <see cref="Use"/> instance.
+            /// </summary>
+            /// <param name="value">The value to use.</param>
+            public UseEnum(string value)
+                : base(value)
+            {
+            }
+        }
+
+
+        /// <summary>
+        /// The intended use for the key.
+        /// </summary>
+        /// <value>The intended use for the key.</value>
+        [DataMember(Name = "use", EmitDefaultValue = true)]
+        
+        public UseEnum Use { get; set; }
         
         /// <summary>
         /// Timestamp when the object was created
@@ -111,13 +155,6 @@ namespace Okta.Sdk.Model
         /// <value>The modulus value for the RSA public key</value>
         [DataMember(Name = "n", EmitDefaultValue = true)]
         public string N { get; set; }
-
-        /// <summary>
-        /// Intended use of the public key
-        /// </summary>
-        /// <value>Intended use of the public key</value>
-        [DataMember(Name = "use", EmitDefaultValue = true)]
-        public string Use { get; set; }
 
         /// <summary>
         /// Base64-encoded X.509 certificate chain with DER encoding
@@ -230,8 +267,7 @@ namespace Okta.Sdk.Model
                 ) && 
                 (
                     this.Use == input.Use ||
-                    (this.Use != null &&
-                    this.Use.Equals(input.Use))
+                    this.Use.Equals(input.Use)
                 ) && 
                 (
                     this.X5c == input.X5c ||
