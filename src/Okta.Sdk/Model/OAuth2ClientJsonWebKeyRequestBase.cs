@@ -91,6 +91,13 @@ namespace Okta.Sdk.Model
         public string Kid { get; set; }
 
         /// <summary>
+        /// Acceptable use of the JSON Web Key
+        /// </summary>
+        /// <value>Acceptable use of the JSON Web Key</value>
+        [DataMember(Name = "use", EmitDefaultValue = true)]
+        public string Use { get; set; }
+
+        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -100,6 +107,7 @@ namespace Okta.Sdk.Model
             sb.Append("class OAuth2ClientJsonWebKeyRequestBase {\n");
             sb.Append("  Kid: ").Append(Kid).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  Use: ").Append(Use).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -143,6 +151,11 @@ namespace Okta.Sdk.Model
                 (
                     this.Status == input.Status ||
                     this.Status.Equals(input.Status)
+                ) && 
+                (
+                    this.Use == input.Use ||
+                    (this.Use != null &&
+                    this.Use.Equals(input.Use))
                 );
         }
 
@@ -163,6 +176,10 @@ namespace Okta.Sdk.Model
                 if (this.Status != null)
                 {
                     hashCode = (hashCode * 59) + this.Status.GetHashCode();
+                }
+                if (this.Use != null)
+                {
+                    hashCode = (hashCode * 59) + this.Use.GetHashCode();
                 }
                 return hashCode;
             }
