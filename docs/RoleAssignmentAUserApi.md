@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 <a name="assignroletouser"></a>
 # **AssignRoleToUser**
-> AssignRoleToUser201Response AssignRoleToUser (string userId, AssignRoleToUserRequest assignRoleRequest, bool? disableNotifications = null)
+> Role AssignRoleToUser (string userId, AssignRoleToUserRequest assignRoleRequest, bool? disableNotifications = null)
 
 Assign a user role
 
@@ -51,7 +51,7 @@ namespace Example
             try
             {
                 // Assign a user role
-                AssignRoleToUser201Response result = apiInstance.AssignRoleToUser(userId, assignRoleRequest, disableNotifications);
+                Role result = apiInstance.AssignRoleToUser(userId, assignRoleRequest, disableNotifications);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AssignRoleToUser201Response**](AssignRoleToUser201Response.md)
+[**Role**](Role.md)
 
 ### Authorization
 
@@ -266,7 +266,7 @@ Name | Type | Description  | Notes
 
 <a name="getuserassignedrole"></a>
 # **GetUserAssignedRole**
-> ListGroupAssignedRoles200ResponseInner GetUserAssignedRole (string userId, string roleAssignmentId)
+> Role GetUserAssignedRole (string userId, string roleAssignmentId)
 
 Retrieve a user role assignment
 
@@ -300,7 +300,7 @@ namespace Example
             try
             {
                 // Retrieve a user role assignment
-                ListGroupAssignedRoles200ResponseInner result = apiInstance.GetUserAssignedRole(userId, roleAssignmentId);
+                Role result = apiInstance.GetUserAssignedRole(userId, roleAssignmentId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -323,7 +323,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListGroupAssignedRoles200ResponseInner**](ListGroupAssignedRoles200ResponseInner.md)
+[**Role**](Role.md)
 
 ### Authorization
 
@@ -428,7 +428,7 @@ Name | Type | Description  | Notes
 
 <a name="listassignedrolesforuser"></a>
 # **ListAssignedRolesForUser**
-> List&lt;ListGroupAssignedRoles200ResponseInner&gt; ListAssignedRolesForUser (string userId, string expand = null)
+> List&lt;Role&gt; ListAssignedRolesForUser (string userId, string expand = null)
 
 List all user role assignments
 
@@ -462,7 +462,7 @@ namespace Example
             try
             {
                 // List all user role assignments
-                List<ListGroupAssignedRoles200ResponseInner> result = apiInstance.ListAssignedRolesForUser(userId, expand).ToListAsync();
+                List<Role> result = apiInstance.ListAssignedRolesForUser(userId, expand).ToListAsync();
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -485,7 +485,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List&lt;ListGroupAssignedRoles200ResponseInner&gt;**](ListGroupAssignedRoles200ResponseInner.md)
+[**List&lt;Role&gt;**](Role.md)
 
 ### Authorization
 

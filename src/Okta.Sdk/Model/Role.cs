@@ -26,6 +26,7 @@ using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
+using JsonSubTypes;
 using OpenAPIDateConverter = Okta.Sdk.Client.OpenAPIDateConverter;
 
 namespace Okta.Sdk.Model
@@ -35,6 +36,23 @@ namespace Okta.Sdk.Model
     /// Role
     /// </summary>
     [DataContract(Name = "Role")]
+    [JsonConverter(typeof(JsonSubtypes), "Type")]
+    [JsonSubtypes.KnownSubType(typeof(CustomRole), "ACCESS_CERTIFICATIONS_ADMIN")]
+    [JsonSubtypes.KnownSubType(typeof(CustomRole), "ACCESS_REQUESTS_ADMIN")]
+    [JsonSubtypes.KnownSubType(typeof(StandardRole), "API_ACCESS_MANAGEMENT_ADMIN")]
+    [JsonSubtypes.KnownSubType(typeof(StandardRole), "APP_ADMIN")]
+    [JsonSubtypes.KnownSubType(typeof(CustomRole), "CUSTOM")]
+    [JsonSubtypes.KnownSubType(typeof(CustomRole), "CustomRole")]
+    [JsonSubtypes.KnownSubType(typeof(StandardRole), "GROUP_MEMBERSHIP_ADMIN")]
+    [JsonSubtypes.KnownSubType(typeof(StandardRole), "HELP_DESK_ADMIN")]
+    [JsonSubtypes.KnownSubType(typeof(StandardRole), "MOBILE_ADMIN")]
+    [JsonSubtypes.KnownSubType(typeof(StandardRole), "ORG_ADMIN")]
+    [JsonSubtypes.KnownSubType(typeof(StandardRole), "READ_ONLY_ADMIN")]
+    [JsonSubtypes.KnownSubType(typeof(StandardRole), "REPORT_ADMIN")]
+    [JsonSubtypes.KnownSubType(typeof(StandardRole), "SUPER_ADMIN")]
+    [JsonSubtypes.KnownSubType(typeof(StandardRole), "StandardRole")]
+    [JsonSubtypes.KnownSubType(typeof(StandardRole), "USER_ADMIN")]
+    [JsonSubtypes.KnownSubType(typeof(CustomRole), "WORKFLOWS_ADMIN")]
     
     public partial class Role : IEquatable<Role>
     {

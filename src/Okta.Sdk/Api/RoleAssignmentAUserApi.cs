@@ -44,8 +44,8 @@ namespace Okta.Sdk.Api
         /// <param name="assignRoleRequest"></param>
         /// <param name="disableNotifications">Setting this to &#x60;true&#x60; grants the user third-party admin status (optional, default to false)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of AssignRoleToUser201Response</returns>
-        System.Threading.Tasks.Task<AssignRoleToUser201Response> AssignRoleToUserAsync(  string userId ,   AssignRoleToUserRequest assignRoleRequest ,   bool? disableNotifications = default(bool?) , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of Role</returns>
+        System.Threading.Tasks.Task<Role> AssignRoleToUserAsync(  string userId ,   AssignRoleToUserRequest assignRoleRequest ,   bool? disableNotifications = default(bool?) , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Assign a user role
         /// </summary>
@@ -57,8 +57,8 @@ namespace Okta.Sdk.Api
         /// <param name="assignRoleRequest"></param>
         /// <param name="disableNotifications">Setting this to &#x60;true&#x60; grants the user third-party admin status (optional, default to false)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (AssignRoleToUser201Response)</returns>
-        System.Threading.Tasks.Task<ApiResponse<AssignRoleToUser201Response>> AssignRoleToUserWithHttpInfoAsync(  string userId ,   AssignRoleToUserRequest assignRoleRequest ,   bool? disableNotifications = default(bool?) , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (Role)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Role>> AssignRoleToUserWithHttpInfoAsync(  string userId ,   AssignRoleToUserRequest assignRoleRequest ,   bool? disableNotifications = default(bool?) , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Retrieve a user role governance source
         /// </summary>
@@ -121,8 +121,8 @@ namespace Okta.Sdk.Api
         /// <param name="userId">ID of an existing Okta user</param>
         /// <param name="roleAssignmentId">The &#x60;id&#x60; of the role assignment</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ListGroupAssignedRoles200ResponseInner</returns>
-        System.Threading.Tasks.Task<ListGroupAssignedRoles200ResponseInner> GetUserAssignedRoleAsync(  string userId ,   string roleAssignmentId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of Role</returns>
+        System.Threading.Tasks.Task<Role> GetUserAssignedRoleAsync(  string userId ,   string roleAssignmentId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Retrieve a user role assignment
         /// </summary>
@@ -133,8 +133,8 @@ namespace Okta.Sdk.Api
         /// <param name="userId">ID of an existing Okta user</param>
         /// <param name="roleAssignmentId">The &#x60;id&#x60; of the role assignment</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ListGroupAssignedRoles200ResponseInner)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListGroupAssignedRoles200ResponseInner>> GetUserAssignedRoleWithHttpInfoAsync(  string userId ,   string roleAssignmentId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (Role)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Role>> GetUserAssignedRoleWithHttpInfoAsync(  string userId ,   string roleAssignmentId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Retrieve all user role governance sources
         /// </summary>
@@ -169,8 +169,8 @@ namespace Okta.Sdk.Api
         /// <param name="userId">ID of an existing Okta user</param>
         /// <param name="expand">An optional parameter used to return targets configured for the standard role assignment in the &#x60;embedded&#x60; property. Supported values: &#x60;targets/groups&#x60; or &#x60;targets/catalog/apps&#x60; (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of List&lt;ListGroupAssignedRoles200ResponseInner&gt;</returns>
-        IOktaCollectionClient<ListGroupAssignedRoles200ResponseInner> ListAssignedRolesForUser(  string userId ,   string expand = default(string) , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of List&lt;Role&gt;</returns>
+        IOktaCollectionClient<Role> ListAssignedRolesForUser(  string userId ,   string expand = default(string) , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// List all user role assignments
         /// </summary>
@@ -181,8 +181,8 @@ namespace Okta.Sdk.Api
         /// <param name="userId">ID of an existing Okta user</param>
         /// <param name="expand">An optional parameter used to return targets configured for the standard role assignment in the &#x60;embedded&#x60; property. Supported values: &#x60;targets/groups&#x60; or &#x60;targets/catalog/apps&#x60; (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (List&lt;ListGroupAssignedRoles200ResponseInner&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<ListGroupAssignedRoles200ResponseInner>>> ListAssignedRolesForUserWithHttpInfoAsync(  string userId ,   string expand = default(string) , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (List&lt;Role&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<Role>>> ListAssignedRolesForUserWithHttpInfoAsync(  string userId ,   string expand = default(string) , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// List all users with role assignments
         /// </summary>
@@ -349,10 +349,10 @@ namespace Okta.Sdk.Api
         /// <param name="assignRoleRequest"></param>
         /// <param name="disableNotifications">Setting this to &#x60;true&#x60; grants the user third-party admin status (optional, default to false)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of AssignRoleToUser201Response</returns>
-        public async System.Threading.Tasks.Task<AssignRoleToUser201Response> AssignRoleToUserAsync(  string userId ,   AssignRoleToUserRequest assignRoleRequest ,   bool? disableNotifications = default(bool?) , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of Role</returns>
+        public async System.Threading.Tasks.Task<Role> AssignRoleToUserAsync(  string userId ,   AssignRoleToUserRequest assignRoleRequest ,   bool? disableNotifications = default(bool?) , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Okta.Sdk.Client.ApiResponse<AssignRoleToUser201Response> localVarResponse = await AssignRoleToUserWithHttpInfoAsync(userId, assignRoleRequest, disableNotifications, cancellationToken).ConfigureAwait(false);
+            Okta.Sdk.Client.ApiResponse<Role> localVarResponse = await AssignRoleToUserWithHttpInfoAsync(userId, assignRoleRequest, disableNotifications, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
         /// <summary>
@@ -363,8 +363,8 @@ namespace Okta.Sdk.Api
         /// <param name="assignRoleRequest"></param>
         /// <param name="disableNotifications">Setting this to &#x60;true&#x60; grants the user third-party admin status (optional, default to false)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (AssignRoleToUser201Response)</returns>
-        public async System.Threading.Tasks.Task<Okta.Sdk.Client.ApiResponse<AssignRoleToUser201Response>> AssignRoleToUserWithHttpInfoAsync(  string userId ,   AssignRoleToUserRequest assignRoleRequest ,   bool? disableNotifications = default(bool?) , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (Role)</returns>
+        public async System.Threading.Tasks.Task<Okta.Sdk.Client.ApiResponse<Role>> AssignRoleToUserWithHttpInfoAsync(  string userId ,   AssignRoleToUserRequest assignRoleRequest ,   bool? disableNotifications = default(bool?) , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'userId' is set
             if (userId == null)
@@ -427,7 +427,7 @@ namespace Okta.Sdk.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<AssignRoleToUser201Response>("/api/v1/users/{userId}/roles", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<Role>("/api/v1/users/{userId}/roles", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -652,10 +652,10 @@ namespace Okta.Sdk.Api
         /// <param name="userId">ID of an existing Okta user</param>
         /// <param name="roleAssignmentId">The &#x60;id&#x60; of the role assignment</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ListGroupAssignedRoles200ResponseInner</returns>
-        public async System.Threading.Tasks.Task<ListGroupAssignedRoles200ResponseInner> GetUserAssignedRoleAsync(  string userId ,   string roleAssignmentId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of Role</returns>
+        public async System.Threading.Tasks.Task<Role> GetUserAssignedRoleAsync(  string userId ,   string roleAssignmentId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Okta.Sdk.Client.ApiResponse<ListGroupAssignedRoles200ResponseInner> localVarResponse = await GetUserAssignedRoleWithHttpInfoAsync(userId, roleAssignmentId, cancellationToken).ConfigureAwait(false);
+            Okta.Sdk.Client.ApiResponse<Role> localVarResponse = await GetUserAssignedRoleWithHttpInfoAsync(userId, roleAssignmentId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
         /// <summary>
@@ -665,8 +665,8 @@ namespace Okta.Sdk.Api
         /// <param name="userId">ID of an existing Okta user</param>
         /// <param name="roleAssignmentId">The &#x60;id&#x60; of the role assignment</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ListGroupAssignedRoles200ResponseInner)</returns>
-        public async System.Threading.Tasks.Task<Okta.Sdk.Client.ApiResponse<ListGroupAssignedRoles200ResponseInner>> GetUserAssignedRoleWithHttpInfoAsync(  string userId ,   string roleAssignmentId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (Role)</returns>
+        public async System.Threading.Tasks.Task<Okta.Sdk.Client.ApiResponse<Role>> GetUserAssignedRoleWithHttpInfoAsync(  string userId ,   string roleAssignmentId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'userId' is set
             if (userId == null)
@@ -724,7 +724,7 @@ namespace Okta.Sdk.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<ListGroupAssignedRoles200ResponseInner>("/api/v1/users/{userId}/roles/{roleAssignmentId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<Role>("/api/v1/users/{userId}/roles/{roleAssignmentId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -838,9 +838,9 @@ namespace Okta.Sdk.Api
         /// <param name="userId">ID of an existing Okta user</param>
         /// <param name="expand">An optional parameter used to return targets configured for the standard role assignment in the &#x60;embedded&#x60; property. Supported values: &#x60;targets/groups&#x60; or &#x60;targets/catalog/apps&#x60; (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of List&lt;ListGroupAssignedRoles200ResponseInner&gt;</returns>
+        /// <returns>Task of List&lt;Role&gt;</returns>
         //a
-        public IOktaCollectionClient<ListGroupAssignedRoles200ResponseInner> ListAssignedRolesForUser(  string userId ,   string expand = default(string) , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public IOktaCollectionClient<Role> ListAssignedRolesForUser(  string userId ,   string expand = default(string) , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'userId' is set
             if (userId == null)
@@ -891,7 +891,7 @@ namespace Okta.Sdk.Api
             
             // If AuthorizationMode is equals to PrivateKey, the authorization header is set in the enumerator for collections.
             
-            return new OktaCollectionClient<ListGroupAssignedRoles200ResponseInner>(localVarRequestOptions, "/api/v1/users/{userId}/roles", this.AsynchronousClient, this.Configuration, this._oAuthTokenProvider);
+            return new OktaCollectionClient<Role>(localVarRequestOptions, "/api/v1/users/{userId}/roles", this.AsynchronousClient, this.Configuration, this._oAuthTokenProvider);
         }
         /// <summary>
         /// List all user role assignments Lists all roles assigned to a user (identified by &#x60;userId&#x60;)
@@ -900,8 +900,8 @@ namespace Okta.Sdk.Api
         /// <param name="userId">ID of an existing Okta user</param>
         /// <param name="expand">An optional parameter used to return targets configured for the standard role assignment in the &#x60;embedded&#x60; property. Supported values: &#x60;targets/groups&#x60; or &#x60;targets/catalog/apps&#x60; (optional)</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (List&lt;ListGroupAssignedRoles200ResponseInner&gt;)</returns>
-        public async System.Threading.Tasks.Task<Okta.Sdk.Client.ApiResponse<List<ListGroupAssignedRoles200ResponseInner>>> ListAssignedRolesForUserWithHttpInfoAsync(  string userId ,   string expand = default(string) , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (List&lt;Role&gt;)</returns>
+        public async System.Threading.Tasks.Task<Okta.Sdk.Client.ApiResponse<List<Role>>> ListAssignedRolesForUserWithHttpInfoAsync(  string userId ,   string expand = default(string) , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'userId' is set
             if (userId == null)
@@ -953,7 +953,7 @@ namespace Okta.Sdk.Api
             // If AuthorizationMode is equals to PrivateKey, the authorization header is set in the enumerator for collections.
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<List<ListGroupAssignedRoles200ResponseInner>>("/api/v1/users/{userId}/roles", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<List<Role>>("/api/v1/users/{userId}/roles", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

@@ -4,14 +4,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**AssignmentType** | **RoleAssignmentType** |  | [optional] 
-**Created** | **DateTimeOffset** | Timestamp when the object was created | [optional] [readonly] 
-**Id** | **string** | Role assignment ID | [optional] [readonly] 
-**Label** | **string** | Label for the role assignment | [optional] [readonly] 
-**LastUpdated** | **DateTimeOffset** | Timestamp when the object was last updated | [optional] [readonly] 
-**Status** | **LifecycleStatus** |  | [optional] 
-**Type** | **RoleType** |  | [optional] 
-**Embedded** | [**StandardRoleEmbedded**](StandardRoleEmbedded.md) |  | [optional] 
+**AssignmentType** | [**RoleAssignmentType**](RoleAssignmentType.md) |  | [optional] 
+**Created** | **DateTimeOffset** |  | [optional] [readonly] 
+**Description** | **string** |  | [optional] 
+**Id** | **string** |  | [optional] [readonly] 
+**Label** | **string** |  | [optional] [readonly] 
+**LastUpdated** | **DateTimeOffset** |  | [optional] [readonly] 
+**Status** | [**LifecycleStatus**](LifecycleStatus.md) |  | [optional] 
+**Type** | [**RoleType**](RoleType.md) |  | [optional] 
+**Embedded** | **Object** | Optional embedded resources for the role assignment | [optional] 
 **Links** | [**LinksAssignee**](LinksAssignee.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
