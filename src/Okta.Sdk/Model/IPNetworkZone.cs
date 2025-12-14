@@ -37,9 +37,9 @@ namespace Okta.Sdk.Model
     /// </summary>
     [DataContract(Name = "IPNetworkZone")]
     [JsonConverter(typeof(JsonSubtypes), "Type")]
-    [JsonSubtypes.KnownSubType(typeof(DynamicNetworkZone), "DYNAMIC")]
-    [JsonSubtypes.KnownSubType(typeof(EnhancedDynamicNetworkZone), "DYNAMIC_V2")]
-    [JsonSubtypes.KnownSubType(typeof(IPNetworkZone), "IP")]
+    [JsonSubtypes.KnownSubType(typeof(DynamicNetworkZone), "DYNAMIC" == "~" ? null : "DYNAMIC")]
+    [JsonSubtypes.KnownSubType(typeof(EnhancedDynamicNetworkZone), "DYNAMIC_V2" == "~" ? null : "DYNAMIC_V2")]
+    [JsonSubtypes.KnownSubType(typeof(IPNetworkZone), "IP" == "~" ? null : "IP")]
     
     public partial class IPNetworkZone : NetworkZone, IEquatable<IPNetworkZone>
     {

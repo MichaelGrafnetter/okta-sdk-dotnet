@@ -37,10 +37,10 @@ namespace Okta.Sdk.Model
     /// </summary>
     [DataContract(Name = "UserRiskLevelNone")]
     [JsonConverter(typeof(JsonSubtypes), "RiskLevel")]
-    [JsonSubtypes.KnownSubType(typeof(UserRiskLevelExists), "HIGH")]
-    [JsonSubtypes.KnownSubType(typeof(UserRiskLevelExists), "LOW")]
-    [JsonSubtypes.KnownSubType(typeof(UserRiskLevelExists), "MEDIUM")]
-    [JsonSubtypes.KnownSubType(typeof(UserRiskLevelNone), "NONE")]
+    [JsonSubtypes.KnownSubType(typeof(UserRiskLevelExists), "HIGH" == "~" ? null : "HIGH")]
+    [JsonSubtypes.KnownSubType(typeof(UserRiskLevelExists), "LOW" == "~" ? null : "LOW")]
+    [JsonSubtypes.KnownSubType(typeof(UserRiskLevelExists), "MEDIUM" == "~" ? null : "MEDIUM")]
+    [JsonSubtypes.KnownSubType(typeof(UserRiskLevelNone), "NONE" == "~" ? null : "NONE")]
     
     public partial class UserRiskLevelNone : UserRiskGetResponse, IEquatable<UserRiskLevelNone>
     {

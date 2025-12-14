@@ -37,12 +37,12 @@ namespace Okta.Sdk.Model
     /// </summary>
     [DataContract(Name = "VerificationMethod")]
     [JsonConverter(typeof(JsonSubtypes), "Type")]
-    [JsonSubtypes.KnownSubType(typeof(AssuranceMethod), "ASSURANCE")]
-    [JsonSubtypes.KnownSubType(typeof(AuthenticationMethodChainMethod), "AUTH_METHOD_CHAIN")]
-    [JsonSubtypes.KnownSubType(typeof(AssuranceMethod), "AssuranceMethod")]
-    [JsonSubtypes.KnownSubType(typeof(AuthenticationMethodChainMethod), "AuthenticationMethodChainMethod")]
-    [JsonSubtypes.KnownSubType(typeof(IdProofingMethod), "ID_PROOFING")]
-    [JsonSubtypes.KnownSubType(typeof(IdProofingMethod), "IdProofingMethod")]
+    [JsonSubtypes.KnownSubType(typeof(AssuranceMethod), "ASSURANCE" == "~" ? null : "ASSURANCE")]
+    [JsonSubtypes.KnownSubType(typeof(AuthenticationMethodChainMethod), "AUTH_METHOD_CHAIN" == "~" ? null : "AUTH_METHOD_CHAIN")]
+    [JsonSubtypes.KnownSubType(typeof(AssuranceMethod), "AssuranceMethod" == "~" ? null : "AssuranceMethod")]
+    [JsonSubtypes.KnownSubType(typeof(AuthenticationMethodChainMethod), "AuthenticationMethodChainMethod" == "~" ? null : "AuthenticationMethodChainMethod")]
+    [JsonSubtypes.KnownSubType(typeof(IdProofingMethod), "ID_PROOFING" == "~" ? null : "ID_PROOFING")]
+    [JsonSubtypes.KnownSubType(typeof(IdProofingMethod), "IdProofingMethod" == "~" ? null : "IdProofingMethod")]
     
     public partial class VerificationMethod : IEquatable<VerificationMethod>
     {

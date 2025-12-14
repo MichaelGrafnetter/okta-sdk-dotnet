@@ -37,16 +37,16 @@ namespace Okta.Sdk.Model
     /// </summary>
     [DataContract(Name = "IdentityProviderProtocol")]
     [JsonConverter(typeof(JsonSubtypes), "Type")]
-    [JsonSubtypes.KnownSubType(typeof(ProtocolIdVerification), "ID_PROOFING")]
-    [JsonSubtypes.KnownSubType(typeof(ProtocolMtls), "MTLS")]
-    [JsonSubtypes.KnownSubType(typeof(ProtocolOAuth), "OAUTH2")]
-    [JsonSubtypes.KnownSubType(typeof(ProtocolOidc), "OIDC")]
-    [JsonSubtypes.KnownSubType(typeof(ProtocolIdVerification), "ProtocolIdVerification")]
-    [JsonSubtypes.KnownSubType(typeof(ProtocolMtls), "ProtocolMtls")]
-    [JsonSubtypes.KnownSubType(typeof(ProtocolOAuth), "ProtocolOAuth")]
-    [JsonSubtypes.KnownSubType(typeof(ProtocolOidc), "ProtocolOidc")]
-    [JsonSubtypes.KnownSubType(typeof(ProtocolSaml), "ProtocolSaml")]
-    [JsonSubtypes.KnownSubType(typeof(ProtocolSaml), "SAML2")]
+    [JsonSubtypes.KnownSubType(typeof(ProtocolIdVerification), "ID_PROOFING" == "~" ? null : "ID_PROOFING")]
+    [JsonSubtypes.KnownSubType(typeof(ProtocolMtls), "MTLS" == "~" ? null : "MTLS")]
+    [JsonSubtypes.KnownSubType(typeof(ProtocolOAuth), "OAUTH2" == "~" ? null : "OAUTH2")]
+    [JsonSubtypes.KnownSubType(typeof(ProtocolOidc), "OIDC" == "~" ? null : "OIDC")]
+    [JsonSubtypes.KnownSubType(typeof(ProtocolIdVerification), "ProtocolIdVerification" == "~" ? null : "ProtocolIdVerification")]
+    [JsonSubtypes.KnownSubType(typeof(ProtocolMtls), "ProtocolMtls" == "~" ? null : "ProtocolMtls")]
+    [JsonSubtypes.KnownSubType(typeof(ProtocolOAuth), "ProtocolOAuth" == "~" ? null : "ProtocolOAuth")]
+    [JsonSubtypes.KnownSubType(typeof(ProtocolOidc), "ProtocolOidc" == "~" ? null : "ProtocolOidc")]
+    [JsonSubtypes.KnownSubType(typeof(ProtocolSaml), "ProtocolSaml" == "~" ? null : "ProtocolSaml")]
+    [JsonSubtypes.KnownSubType(typeof(ProtocolSaml), "SAML2" == "~" ? null : "SAML2")]
     
     public partial class IdentityProviderProtocol : IEquatable<IdentityProviderProtocol>
     {

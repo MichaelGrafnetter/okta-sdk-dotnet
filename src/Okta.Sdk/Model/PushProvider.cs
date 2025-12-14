@@ -37,10 +37,10 @@ namespace Okta.Sdk.Model
     /// </summary>
     [DataContract(Name = "PushProvider")]
     [JsonConverter(typeof(JsonSubtypes), "ProviderType")]
-    [JsonSubtypes.KnownSubType(typeof(APNSPushProvider), "APNS")]
-    [JsonSubtypes.KnownSubType(typeof(APNSPushProvider), "APNSPushProvider")]
-    [JsonSubtypes.KnownSubType(typeof(FCMPushProvider), "FCM")]
-    [JsonSubtypes.KnownSubType(typeof(FCMPushProvider), "FCMPushProvider")]
+    [JsonSubtypes.KnownSubType(typeof(APNSPushProvider), "APNS" == "~" ? null : "APNS")]
+    [JsonSubtypes.KnownSubType(typeof(APNSPushProvider), "APNSPushProvider" == "~" ? null : "APNSPushProvider")]
+    [JsonSubtypes.KnownSubType(typeof(FCMPushProvider), "FCM" == "~" ? null : "FCM")]
+    [JsonSubtypes.KnownSubType(typeof(FCMPushProvider), "FCMPushProvider" == "~" ? null : "FCMPushProvider")]
     
     public partial class PushProvider : IEquatable<PushProvider>
     {

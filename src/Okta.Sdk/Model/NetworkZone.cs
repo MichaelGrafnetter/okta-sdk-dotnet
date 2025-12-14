@@ -37,12 +37,12 @@ namespace Okta.Sdk.Model
     /// </summary>
     [DataContract(Name = "NetworkZone")]
     [JsonConverter(typeof(JsonSubtypes), "Type")]
-    [JsonSubtypes.KnownSubType(typeof(DynamicNetworkZone), "DYNAMIC")]
-    [JsonSubtypes.KnownSubType(typeof(EnhancedDynamicNetworkZone), "DYNAMIC_V2")]
-    [JsonSubtypes.KnownSubType(typeof(DynamicNetworkZone), "DynamicNetworkZone")]
-    [JsonSubtypes.KnownSubType(typeof(EnhancedDynamicNetworkZone), "EnhancedDynamicNetworkZone")]
-    [JsonSubtypes.KnownSubType(typeof(IPNetworkZone), "IP")]
-    [JsonSubtypes.KnownSubType(typeof(IPNetworkZone), "IPNetworkZone")]
+    [JsonSubtypes.KnownSubType(typeof(DynamicNetworkZone), "DYNAMIC" == "~" ? null : "DYNAMIC")]
+    [JsonSubtypes.KnownSubType(typeof(EnhancedDynamicNetworkZone), "DYNAMIC_V2" == "~" ? null : "DYNAMIC_V2")]
+    [JsonSubtypes.KnownSubType(typeof(DynamicNetworkZone), "DynamicNetworkZone" == "~" ? null : "DynamicNetworkZone")]
+    [JsonSubtypes.KnownSubType(typeof(EnhancedDynamicNetworkZone), "EnhancedDynamicNetworkZone" == "~" ? null : "EnhancedDynamicNetworkZone")]
+    [JsonSubtypes.KnownSubType(typeof(IPNetworkZone), "IP" == "~" ? null : "IP")]
+    [JsonSubtypes.KnownSubType(typeof(IPNetworkZone), "IPNetworkZone" == "~" ? null : "IPNetworkZone")]
     
     public partial class NetworkZone : IEquatable<NetworkZone>
     {

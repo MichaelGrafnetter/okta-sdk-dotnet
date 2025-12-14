@@ -37,8 +37,8 @@ namespace Okta.Sdk.Model
     /// </summary>
     [DataContract(Name = "UserProvisioningApplicationFeature")]
     [JsonConverter(typeof(JsonSubtypes), "Name")]
-    [JsonSubtypes.KnownSubType(typeof(InboundProvisioningApplicationFeature), "INBOUND_PROVISIONING")]
-    [JsonSubtypes.KnownSubType(typeof(UserProvisioningApplicationFeature), "USER_PROVISIONING")]
+    [JsonSubtypes.KnownSubType(typeof(InboundProvisioningApplicationFeature), "INBOUND_PROVISIONING" == "~" ? null : "INBOUND_PROVISIONING")]
+    [JsonSubtypes.KnownSubType(typeof(UserProvisioningApplicationFeature), "USER_PROVISIONING" == "~" ? null : "USER_PROVISIONING")]
     
     public partial class UserProvisioningApplicationFeature : ApplicationFeature, IEquatable<UserProvisioningApplicationFeature>
     {

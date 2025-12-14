@@ -37,16 +37,16 @@ namespace Okta.Sdk.Model
     /// </summary>
     [DataContract(Name = "DeviceAssurance")]
     [JsonConverter(typeof(JsonSubtypes), "Platform")]
-    [JsonSubtypes.KnownSubType(typeof(DeviceAssuranceAndroidPlatform), "ANDROID")]
-    [JsonSubtypes.KnownSubType(typeof(DeviceAssuranceChromeOSPlatform), "CHROMEOS")]
-    [JsonSubtypes.KnownSubType(typeof(DeviceAssuranceAndroidPlatform), "DeviceAssuranceAndroidPlatform")]
-    [JsonSubtypes.KnownSubType(typeof(DeviceAssuranceChromeOSPlatform), "DeviceAssuranceChromeOSPlatform")]
-    [JsonSubtypes.KnownSubType(typeof(DeviceAssuranceIOSPlatform), "DeviceAssuranceIOSPlatform")]
-    [JsonSubtypes.KnownSubType(typeof(DeviceAssuranceMacOSPlatform), "DeviceAssuranceMacOSPlatform")]
-    [JsonSubtypes.KnownSubType(typeof(DeviceAssuranceWindowsPlatform), "DeviceAssuranceWindowsPlatform")]
-    [JsonSubtypes.KnownSubType(typeof(DeviceAssuranceIOSPlatform), "IOS")]
-    [JsonSubtypes.KnownSubType(typeof(DeviceAssuranceMacOSPlatform), "MACOS")]
-    [JsonSubtypes.KnownSubType(typeof(DeviceAssuranceWindowsPlatform), "WINDOWS")]
+    [JsonSubtypes.KnownSubType(typeof(DeviceAssuranceAndroidPlatform), "ANDROID" == "~" ? null : "ANDROID")]
+    [JsonSubtypes.KnownSubType(typeof(DeviceAssuranceChromeOSPlatform), "CHROMEOS" == "~" ? null : "CHROMEOS")]
+    [JsonSubtypes.KnownSubType(typeof(DeviceAssuranceAndroidPlatform), "DeviceAssuranceAndroidPlatform" == "~" ? null : "DeviceAssuranceAndroidPlatform")]
+    [JsonSubtypes.KnownSubType(typeof(DeviceAssuranceChromeOSPlatform), "DeviceAssuranceChromeOSPlatform" == "~" ? null : "DeviceAssuranceChromeOSPlatform")]
+    [JsonSubtypes.KnownSubType(typeof(DeviceAssuranceIOSPlatform), "DeviceAssuranceIOSPlatform" == "~" ? null : "DeviceAssuranceIOSPlatform")]
+    [JsonSubtypes.KnownSubType(typeof(DeviceAssuranceMacOSPlatform), "DeviceAssuranceMacOSPlatform" == "~" ? null : "DeviceAssuranceMacOSPlatform")]
+    [JsonSubtypes.KnownSubType(typeof(DeviceAssuranceWindowsPlatform), "DeviceAssuranceWindowsPlatform" == "~" ? null : "DeviceAssuranceWindowsPlatform")]
+    [JsonSubtypes.KnownSubType(typeof(DeviceAssuranceIOSPlatform), "IOS" == "~" ? null : "IOS")]
+    [JsonSubtypes.KnownSubType(typeof(DeviceAssuranceMacOSPlatform), "MACOS" == "~" ? null : "MACOS")]
+    [JsonSubtypes.KnownSubType(typeof(DeviceAssuranceWindowsPlatform), "WINDOWS" == "~" ? null : "WINDOWS")]
     
     public partial class DeviceAssurance : IEquatable<DeviceAssurance>
     {

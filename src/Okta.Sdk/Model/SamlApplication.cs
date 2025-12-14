@@ -37,15 +37,19 @@ namespace Okta.Sdk.Model
     /// </summary>
     [DataContract(Name = "SamlApplication")]
     [JsonConverter(typeof(JsonSubtypes), "SignOnMode")]
-    [JsonSubtypes.KnownSubType(typeof(AutoLoginApplication), "AUTO_LOGIN")]
-    [JsonSubtypes.KnownSubType(typeof(BasicAuthApplication), "BASIC_AUTH")]
-    [JsonSubtypes.KnownSubType(typeof(BookmarkApplication), "BOOKMARK")]
-    [JsonSubtypes.KnownSubType(typeof(BrowserPluginApplication), "BROWSER_PLUGIN")]
-    [JsonSubtypes.KnownSubType(typeof(OpenIdConnectApplication), "OPENID_CONNECT")]
-    [JsonSubtypes.KnownSubType(typeof(Saml11Application), "SAML_1_1")]
-    [JsonSubtypes.KnownSubType(typeof(SamlApplication), "SAML_2_0")]
-    [JsonSubtypes.KnownSubType(typeof(SecurePasswordStoreApplication), "SECURE_PASSWORD_STORE")]
-    [JsonSubtypes.KnownSubType(typeof(WsFederationApplication), "WS_FEDERATION")]
+    [JsonSubtypes.KnownSubType(typeof(AutoLoginApplication), "AUTO_LOGIN" == "~" ? null : "AUTO_LOGIN")]
+    [JsonSubtypes.KnownSubType(typeof(Application), "AWS_FEDERATED_LOGIN" == "~" ? null : "AWS_FEDERATED_LOGIN")]
+    [JsonSubtypes.KnownSubType(typeof(BasicAuthApplication), "BASIC_AUTH" == "~" ? null : "BASIC_AUTH")]
+    [JsonSubtypes.KnownSubType(typeof(BookmarkApplication), "BOOKMARK" == "~" ? null : "BOOKMARK")]
+    [JsonSubtypes.KnownSubType(typeof(BrowserPluginApplication), "BROWSER_PLUGIN" == "~" ? null : "BROWSER_PLUGIN")]
+    [JsonSubtypes.KnownSubType(typeof(OpenIdConnectApplication), "OPENID_CONNECT" == "~" ? null : "OPENID_CONNECT")]
+    [JsonSubtypes.KnownSubType(typeof(Application), "RADIUS_FOR_CISCO_ASA" == "~" ? null : "RADIUS_FOR_CISCO_ASA")]
+    [JsonSubtypes.KnownSubType(typeof(Application), "RADIUS_FOR_GENERIC_APP" == "~" ? null : "RADIUS_FOR_GENERIC_APP")]
+    [JsonSubtypes.KnownSubType(typeof(Saml11Application), "SAML_1_1" == "~" ? null : "SAML_1_1")]
+    [JsonSubtypes.KnownSubType(typeof(SamlApplication), "SAML_2_0" == "~" ? null : "SAML_2_0")]
+    [JsonSubtypes.KnownSubType(typeof(SecurePasswordStoreApplication), "SECURE_PASSWORD_STORE" == "~" ? null : "SECURE_PASSWORD_STORE")]
+    [JsonSubtypes.KnownSubType(typeof(WsFederationApplication), "WS_FEDERATION" == "~" ? null : "WS_FEDERATION")]
+    [JsonSubtypes.KnownSubType(typeof(ActiveDirectoryApplication), "~" == "~" ? null : "~")]
     
     public partial class SamlApplication : Application, IEquatable<SamlApplication>
     {

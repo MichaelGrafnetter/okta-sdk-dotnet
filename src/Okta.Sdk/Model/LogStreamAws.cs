@@ -37,8 +37,8 @@ namespace Okta.Sdk.Model
     /// </summary>
     [DataContract(Name = "LogStreamAws")]
     [JsonConverter(typeof(JsonSubtypes), "Type")]
-    [JsonSubtypes.KnownSubType(typeof(LogStreamAws), "aws_eventbridge")]
-    [JsonSubtypes.KnownSubType(typeof(LogStreamSplunk), "splunk_cloud_logstreaming")]
+    [JsonSubtypes.KnownSubType(typeof(LogStreamAws), "aws_eventbridge" == "~" ? null : "aws_eventbridge")]
+    [JsonSubtypes.KnownSubType(typeof(LogStreamSplunk), "splunk_cloud_logstreaming" == "~" ? null : "splunk_cloud_logstreaming")]
     
     public partial class LogStreamAws : LogStream, IEquatable<LogStreamAws>
     {

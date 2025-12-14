@@ -37,8 +37,8 @@ namespace Okta.Sdk.Model
     /// </summary>
     [DataContract(Name = "InlineHookOAuthChannelConfigCreate")]
     [JsonConverter(typeof(JsonSubtypes), "AuthType")]
-    [JsonSubtypes.KnownSubType(typeof(InlineHookOAuthClientSecretConfigCreate), "client_secret_post")]
-    [JsonSubtypes.KnownSubType(typeof(InlineHookOAuthPrivateKeyJwtConfig), "private_key_jwt")]
+    [JsonSubtypes.KnownSubType(typeof(InlineHookOAuthClientSecretConfigCreate), "client_secret_post" == "~" ? null : "client_secret_post")]
+    [JsonSubtypes.KnownSubType(typeof(InlineHookOAuthPrivateKeyJwtConfig), "private_key_jwt" == "~" ? null : "private_key_jwt")]
     
     public partial class InlineHookOAuthChannelConfigCreate : IEquatable<InlineHookOAuthChannelConfigCreate>
     {

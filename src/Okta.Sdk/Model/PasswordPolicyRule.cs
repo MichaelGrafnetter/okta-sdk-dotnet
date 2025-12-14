@@ -37,15 +37,15 @@ namespace Okta.Sdk.Model
     /// </summary>
     [DataContract(Name = "PasswordPolicyRule")]
     [JsonConverter(typeof(JsonSubtypes), "Type")]
-    [JsonSubtypes.KnownSubType(typeof(AccessPolicyRule), "ACCESS_POLICY")]
-    [JsonSubtypes.KnownSubType(typeof(DeviceSignalCollectionPolicyRule), "DEVICE_SIGNAL_COLLECTION")]
-    [JsonSubtypes.KnownSubType(typeof(EntityRiskPolicyRule), "ENTITY_RISK")]
-    [JsonSubtypes.KnownSubType(typeof(IdpDiscoveryPolicyRule), "IDP_DISCOVERY")]
-    [JsonSubtypes.KnownSubType(typeof(AuthenticatorEnrollmentPolicyRule), "MFA_ENROLL")]
-    [JsonSubtypes.KnownSubType(typeof(PasswordPolicyRule), "PASSWORD")]
-    [JsonSubtypes.KnownSubType(typeof(PostAuthSessionPolicyRule), "POST_AUTH_SESSION")]
-    [JsonSubtypes.KnownSubType(typeof(ProfileEnrollmentPolicyRule), "PROFILE_ENROLLMENT")]
-    [JsonSubtypes.KnownSubType(typeof(OktaSignOnPolicyRule), "SIGN_ON")]
+    [JsonSubtypes.KnownSubType(typeof(AccessPolicyRule), "ACCESS_POLICY" == "~" ? null : "ACCESS_POLICY")]
+    [JsonSubtypes.KnownSubType(typeof(DeviceSignalCollectionPolicyRule), "DEVICE_SIGNAL_COLLECTION" == "~" ? null : "DEVICE_SIGNAL_COLLECTION")]
+    [JsonSubtypes.KnownSubType(typeof(EntityRiskPolicyRule), "ENTITY_RISK" == "~" ? null : "ENTITY_RISK")]
+    [JsonSubtypes.KnownSubType(typeof(IdpDiscoveryPolicyRule), "IDP_DISCOVERY" == "~" ? null : "IDP_DISCOVERY")]
+    [JsonSubtypes.KnownSubType(typeof(AuthenticatorEnrollmentPolicyRule), "MFA_ENROLL" == "~" ? null : "MFA_ENROLL")]
+    [JsonSubtypes.KnownSubType(typeof(PasswordPolicyRule), "PASSWORD" == "~" ? null : "PASSWORD")]
+    [JsonSubtypes.KnownSubType(typeof(PostAuthSessionPolicyRule), "POST_AUTH_SESSION" == "~" ? null : "POST_AUTH_SESSION")]
+    [JsonSubtypes.KnownSubType(typeof(ProfileEnrollmentPolicyRule), "PROFILE_ENROLLMENT" == "~" ? null : "PROFILE_ENROLLMENT")]
+    [JsonSubtypes.KnownSubType(typeof(OktaSignOnPolicyRule), "SIGN_ON" == "~" ? null : "SIGN_ON")]
     
     public partial class PasswordPolicyRule : PolicyRule, IEquatable<PasswordPolicyRule>
     {

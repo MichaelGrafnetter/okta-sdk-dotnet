@@ -37,14 +37,14 @@ namespace Okta.Sdk.Model
     /// </summary>
     [DataContract(Name = "BehaviorRule")]
     [JsonConverter(typeof(JsonSubtypes), "Type")]
-    [JsonSubtypes.KnownSubType(typeof(BehaviorRuleAnomalousDevice), "ANOMALOUS_DEVICE")]
-    [JsonSubtypes.KnownSubType(typeof(BehaviorRuleAnomalousIP), "ANOMALOUS_IP")]
-    [JsonSubtypes.KnownSubType(typeof(BehaviorRuleAnomalousLocation), "ANOMALOUS_LOCATION")]
-    [JsonSubtypes.KnownSubType(typeof(BehaviorRuleAnomalousDevice), "BehaviorRuleAnomalousDevice")]
-    [JsonSubtypes.KnownSubType(typeof(BehaviorRuleAnomalousIP), "BehaviorRuleAnomalousIP")]
-    [JsonSubtypes.KnownSubType(typeof(BehaviorRuleAnomalousLocation), "BehaviorRuleAnomalousLocation")]
-    [JsonSubtypes.KnownSubType(typeof(BehaviorRuleVelocity), "BehaviorRuleVelocity")]
-    [JsonSubtypes.KnownSubType(typeof(BehaviorRuleVelocity), "VELOCITY")]
+    [JsonSubtypes.KnownSubType(typeof(BehaviorRuleAnomalousDevice), "ANOMALOUS_DEVICE" == "~" ? null : "ANOMALOUS_DEVICE")]
+    [JsonSubtypes.KnownSubType(typeof(BehaviorRuleAnomalousIP), "ANOMALOUS_IP" == "~" ? null : "ANOMALOUS_IP")]
+    [JsonSubtypes.KnownSubType(typeof(BehaviorRuleAnomalousLocation), "ANOMALOUS_LOCATION" == "~" ? null : "ANOMALOUS_LOCATION")]
+    [JsonSubtypes.KnownSubType(typeof(BehaviorRuleAnomalousDevice), "BehaviorRuleAnomalousDevice" == "~" ? null : "BehaviorRuleAnomalousDevice")]
+    [JsonSubtypes.KnownSubType(typeof(BehaviorRuleAnomalousIP), "BehaviorRuleAnomalousIP" == "~" ? null : "BehaviorRuleAnomalousIP")]
+    [JsonSubtypes.KnownSubType(typeof(BehaviorRuleAnomalousLocation), "BehaviorRuleAnomalousLocation" == "~" ? null : "BehaviorRuleAnomalousLocation")]
+    [JsonSubtypes.KnownSubType(typeof(BehaviorRuleVelocity), "BehaviorRuleVelocity" == "~" ? null : "BehaviorRuleVelocity")]
+    [JsonSubtypes.KnownSubType(typeof(BehaviorRuleVelocity), "VELOCITY" == "~" ? null : "VELOCITY")]
     
     public partial class BehaviorRule : IEquatable<BehaviorRule>
     {

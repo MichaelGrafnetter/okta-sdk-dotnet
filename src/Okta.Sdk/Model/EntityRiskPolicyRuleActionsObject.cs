@@ -37,8 +37,8 @@ namespace Okta.Sdk.Model
     /// </summary>
     [DataContract(Name = "EntityRiskPolicyRuleActionsObject")]
     [JsonConverter(typeof(JsonSubtypes), "Action")]
-    [JsonSubtypes.KnownSubType(typeof(EntityRiskPolicyRuleActionRunWorkflow), "RUN_WORKFLOW")]
-    [JsonSubtypes.KnownSubType(typeof(EntityRiskPolicyRuleActionTerminateAllSessions), "TERMINATE_ALL_SESSIONS")]
+    [JsonSubtypes.KnownSubType(typeof(EntityRiskPolicyRuleActionRunWorkflow), "RUN_WORKFLOW" == "~" ? null : "RUN_WORKFLOW")]
+    [JsonSubtypes.KnownSubType(typeof(EntityRiskPolicyRuleActionTerminateAllSessions), "TERMINATE_ALL_SESSIONS" == "~" ? null : "TERMINATE_ALL_SESSIONS")]
     
     public partial class EntityRiskPolicyRuleActionsObject : IEquatable<EntityRiskPolicyRuleActionsObject>
     {

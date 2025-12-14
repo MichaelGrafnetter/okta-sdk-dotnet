@@ -37,10 +37,10 @@ namespace Okta.Sdk.Model
     /// </summary>
     [DataContract(Name = "RegistrationInlineHookRequest")]
     [JsonConverter(typeof(JsonSubtypes), "RequestType")]
-    [JsonSubtypes.KnownSubType(typeof(RegistrationInlineHookPPData), "RegistrationInlineHookPPData")]
-    [JsonSubtypes.KnownSubType(typeof(RegistrationInlineHookSSRData), "RegistrationInlineHookSSRData")]
-    [JsonSubtypes.KnownSubType(typeof(RegistrationInlineHookPPData), "progressive.profile")]
-    [JsonSubtypes.KnownSubType(typeof(RegistrationInlineHookSSRData), "self.service.registration")]
+    [JsonSubtypes.KnownSubType(typeof(RegistrationInlineHookPPData), "RegistrationInlineHookPPData" == "~" ? null : "RegistrationInlineHookPPData")]
+    [JsonSubtypes.KnownSubType(typeof(RegistrationInlineHookSSRData), "RegistrationInlineHookSSRData" == "~" ? null : "RegistrationInlineHookSSRData")]
+    [JsonSubtypes.KnownSubType(typeof(RegistrationInlineHookPPData), "progressive.profile" == "~" ? null : "progressive.profile")]
+    [JsonSubtypes.KnownSubType(typeof(RegistrationInlineHookSSRData), "self.service.registration" == "~" ? null : "self.service.registration")]
     
     public partial class RegistrationInlineHookRequest : IEquatable<RegistrationInlineHookRequest>
     {

@@ -37,8 +37,8 @@ namespace Okta.Sdk.Model
     /// </summary>
     [DataContract(Name = "AppConfig")]
     [JsonConverter(typeof(JsonSubtypes), "Type")]
-    [JsonSubtypes.KnownSubType(typeof(AppConfigActiveDirectory), "ACTIVE_DIRECTORY")]
-    [JsonSubtypes.KnownSubType(typeof(AppConfigActiveDirectory), "AppConfigActiveDirectory")]
+    [JsonSubtypes.KnownSubType(typeof(AppConfigActiveDirectory), "ACTIVE_DIRECTORY" == "~" ? null : "ACTIVE_DIRECTORY")]
+    [JsonSubtypes.KnownSubType(typeof(AppConfigActiveDirectory), "AppConfigActiveDirectory" == "~" ? null : "AppConfigActiveDirectory")]
     
     public partial class AppConfig : IEquatable<AppConfig>
     {

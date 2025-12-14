@@ -37,9 +37,9 @@ namespace Okta.Sdk.Model
     /// </summary>
     [DataContract(Name = "AssuranceMethod")]
     [JsonConverter(typeof(JsonSubtypes), "Type")]
-    [JsonSubtypes.KnownSubType(typeof(AssuranceMethod), "ASSURANCE")]
-    [JsonSubtypes.KnownSubType(typeof(AuthenticationMethodChainMethod), "AUTH_METHOD_CHAIN")]
-    [JsonSubtypes.KnownSubType(typeof(IdProofingMethod), "ID_PROOFING")]
+    [JsonSubtypes.KnownSubType(typeof(AssuranceMethod), "ASSURANCE" == "~" ? null : "ASSURANCE")]
+    [JsonSubtypes.KnownSubType(typeof(AuthenticationMethodChainMethod), "AUTH_METHOD_CHAIN" == "~" ? null : "AUTH_METHOD_CHAIN")]
+    [JsonSubtypes.KnownSubType(typeof(IdProofingMethod), "ID_PROOFING" == "~" ? null : "ID_PROOFING")]
     
     public partial class AssuranceMethod : VerificationMethod, IEquatable<AssuranceMethod>
     {

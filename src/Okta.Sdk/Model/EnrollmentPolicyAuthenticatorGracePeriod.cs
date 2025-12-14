@@ -37,8 +37,8 @@ namespace Okta.Sdk.Model
     /// </summary>
     [DataContract(Name = "EnrollmentPolicyAuthenticatorGracePeriod")]
     [JsonConverter(typeof(JsonSubtypes), "Type")]
-    [JsonSubtypes.KnownSubType(typeof(ByDateTimeAuthenticatorGracePeriodExpiry), "BY_DATE_TIME")]
-    [JsonSubtypes.KnownSubType(typeof(ByDateTimeAuthenticatorGracePeriodExpiry), "ByDateTimeAuthenticatorGracePeriodExpiry")]
+    [JsonSubtypes.KnownSubType(typeof(ByDateTimeAuthenticatorGracePeriodExpiry), "BY_DATE_TIME" == "~" ? null : "BY_DATE_TIME")]
+    [JsonSubtypes.KnownSubType(typeof(ByDateTimeAuthenticatorGracePeriodExpiry), "ByDateTimeAuthenticatorGracePeriodExpiry" == "~" ? null : "ByDateTimeAuthenticatorGracePeriodExpiry")]
     
     public partial class EnrollmentPolicyAuthenticatorGracePeriod : IEquatable<EnrollmentPolicyAuthenticatorGracePeriod>
     {
