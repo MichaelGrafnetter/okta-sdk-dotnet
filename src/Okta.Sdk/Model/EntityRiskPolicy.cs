@@ -37,15 +37,15 @@ namespace Okta.Sdk.Model
     /// </summary>
     [DataContract(Name = "EntityRiskPolicy")]
     [JsonConverter(typeof(JsonSubtypes), "Type")]
-    [JsonSubtypes.KnownSubType(typeof(AccessPolicy), "ACCESS_POLICY")]
-    [JsonSubtypes.KnownSubType(typeof(DeviceSignalCollectionPolicy), "DEVICE_SIGNAL_COLLECTION")]
-    [JsonSubtypes.KnownSubType(typeof(EntityRiskPolicy), "ENTITY_RISK")]
-    [JsonSubtypes.KnownSubType(typeof(IdpDiscoveryPolicy), "IDP_DISCOVERY")]
-    [JsonSubtypes.KnownSubType(typeof(AuthenticatorEnrollmentPolicy), "MFA_ENROLL")]
-    [JsonSubtypes.KnownSubType(typeof(OktaSignOnPolicy), "OKTA_SIGN_ON")]
-    [JsonSubtypes.KnownSubType(typeof(PasswordPolicy), "PASSWORD")]
-    [JsonSubtypes.KnownSubType(typeof(PostAuthSessionPolicy), "POST_AUTH_SESSION")]
-    [JsonSubtypes.KnownSubType(typeof(ProfileEnrollmentPolicy), "PROFILE_ENROLLMENT")]
+    [JsonSubtypes.KnownSubType(typeof(AccessPolicy), "ACCESS_POLICY" == "~" ? null : "ACCESS_POLICY")]
+    [JsonSubtypes.KnownSubType(typeof(DeviceSignalCollectionPolicy), "DEVICE_SIGNAL_COLLECTION" == "~" ? null : "DEVICE_SIGNAL_COLLECTION")]
+    [JsonSubtypes.KnownSubType(typeof(EntityRiskPolicy), "ENTITY_RISK" == "~" ? null : "ENTITY_RISK")]
+    [JsonSubtypes.KnownSubType(typeof(IdpDiscoveryPolicy), "IDP_DISCOVERY" == "~" ? null : "IDP_DISCOVERY")]
+    [JsonSubtypes.KnownSubType(typeof(AuthenticatorEnrollmentPolicy), "MFA_ENROLL" == "~" ? null : "MFA_ENROLL")]
+    [JsonSubtypes.KnownSubType(typeof(OktaSignOnPolicy), "OKTA_SIGN_ON" == "~" ? null : "OKTA_SIGN_ON")]
+    [JsonSubtypes.KnownSubType(typeof(PasswordPolicy), "PASSWORD" == "~" ? null : "PASSWORD")]
+    [JsonSubtypes.KnownSubType(typeof(PostAuthSessionPolicy), "POST_AUTH_SESSION" == "~" ? null : "POST_AUTH_SESSION")]
+    [JsonSubtypes.KnownSubType(typeof(ProfileEnrollmentPolicy), "PROFILE_ENROLLMENT" == "~" ? null : "PROFILE_ENROLLMENT")]
     
     public partial class EntityRiskPolicy : Policy, IEquatable<EntityRiskPolicy>
     {

@@ -26,6 +26,7 @@ using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
+using JsonSubTypes;
 using OpenAPIDateConverter = Okta.Sdk.Client.OpenAPIDateConverter;
 
 namespace Okta.Sdk.Model
@@ -35,122 +36,25 @@ namespace Okta.Sdk.Model
     /// CustomRole
     /// </summary>
     [DataContract(Name = "CustomRole")]
+    [JsonConverter(typeof(JsonSubtypes), "Type")]
+    [JsonSubtypes.KnownSubType(typeof(CustomRole), "ACCESS_CERTIFICATIONS_ADMIN" == "~" ? null : "ACCESS_CERTIFICATIONS_ADMIN")]
+    [JsonSubtypes.KnownSubType(typeof(CustomRole), "ACCESS_REQUESTS_ADMIN" == "~" ? null : "ACCESS_REQUESTS_ADMIN")]
+    [JsonSubtypes.KnownSubType(typeof(StandardRole), "API_ACCESS_MANAGEMENT_ADMIN" == "~" ? null : "API_ACCESS_MANAGEMENT_ADMIN")]
+    [JsonSubtypes.KnownSubType(typeof(StandardRole), "APP_ADMIN" == "~" ? null : "APP_ADMIN")]
+    [JsonSubtypes.KnownSubType(typeof(CustomRole), "CUSTOM" == "~" ? null : "CUSTOM")]
+    [JsonSubtypes.KnownSubType(typeof(StandardRole), "GROUP_MEMBERSHIP_ADMIN" == "~" ? null : "GROUP_MEMBERSHIP_ADMIN")]
+    [JsonSubtypes.KnownSubType(typeof(StandardRole), "HELP_DESK_ADMIN" == "~" ? null : "HELP_DESK_ADMIN")]
+    [JsonSubtypes.KnownSubType(typeof(StandardRole), "MOBILE_ADMIN" == "~" ? null : "MOBILE_ADMIN")]
+    [JsonSubtypes.KnownSubType(typeof(StandardRole), "ORG_ADMIN" == "~" ? null : "ORG_ADMIN")]
+    [JsonSubtypes.KnownSubType(typeof(StandardRole), "READ_ONLY_ADMIN" == "~" ? null : "READ_ONLY_ADMIN")]
+    [JsonSubtypes.KnownSubType(typeof(StandardRole), "REPORT_ADMIN" == "~" ? null : "REPORT_ADMIN")]
+    [JsonSubtypes.KnownSubType(typeof(StandardRole), "SUPER_ADMIN" == "~" ? null : "SUPER_ADMIN")]
+    [JsonSubtypes.KnownSubType(typeof(StandardRole), "USER_ADMIN" == "~" ? null : "USER_ADMIN")]
+    [JsonSubtypes.KnownSubType(typeof(CustomRole), "WORKFLOWS_ADMIN" == "~" ? null : "WORKFLOWS_ADMIN")]
     
-    public partial class CustomRole : IEquatable<CustomRole>
+    public partial class CustomRole : Role, IEquatable<CustomRole>
     {
-
-        /// <summary>
-        /// Gets or Sets AssignmentType
-        /// </summary>
-        [DataMember(Name = "assignmentType", EmitDefaultValue = true)]
         
-        public RoleAssignmentType AssignmentType { get; set; }
-
-        /// <summary>
-        /// Gets or Sets Status
-        /// </summary>
-        [DataMember(Name = "status", EmitDefaultValue = true)]
-        
-        public LifecycleStatus Status { get; set; }
-        /// <summary>
-        /// CUSTOM for a custom role
-        /// </summary>
-        /// <value>CUSTOM for a custom role</value>
-        [JsonConverter(typeof(StringEnumSerializingConverter))]
-        public sealed class TypeEnum : StringEnum
-        {
-            /// <summary>
-            /// StringEnum CUSTOM for value: CUSTOM
-            /// </summary>
-            
-            public static TypeEnum CUSTOM = new TypeEnum("CUSTOM");
-
-
-            /// <summary>
-            /// Implicit operator declaration to accept and convert a string value as a <see cref="TypeEnum"/>
-            /// </summary>
-            /// <param name="value">The value to use</param>
-            public static implicit operator TypeEnum(string value) => new TypeEnum(value);
-
-            /// <summary>
-            /// Creates a new <see cref="Type"/> instance.
-            /// </summary>
-            /// <param name="value">The value to use.</param>
-            public TypeEnum(string value)
-                : base(value)
-            {
-            }
-        }
-
-
-        /// <summary>
-        /// CUSTOM for a custom role
-        /// </summary>
-        /// <value>CUSTOM for a custom role</value>
-        [DataMember(Name = "type", EmitDefaultValue = true)]
-        
-        public TypeEnum Type { get; set; }
-        
-        /// <summary>
-        /// Timestamp when the object was created
-        /// </summary>
-        /// <value>Timestamp when the object was created</value>
-        [DataMember(Name = "created", EmitDefaultValue = true)]
-        public DateTimeOffset Created { get; private set; }
-
-        /// <summary>
-        /// Returns false as Created should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeCreated()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Binding object ID
-        /// </summary>
-        /// <value>Binding object ID</value>
-        [DataMember(Name = "id", EmitDefaultValue = true)]
-        public string Id { get; private set; }
-
-        /// <summary>
-        /// Returns false as Id should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeId()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Label for the custom role assignment
-        /// </summary>
-        /// <value>Label for the custom role assignment</value>
-        [DataMember(Name = "label", EmitDefaultValue = true)]
-        public string Label { get; private set; }
-
-        /// <summary>
-        /// Returns false as Label should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeLabel()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Timestamp when the object was last updated
-        /// </summary>
-        /// <value>Timestamp when the object was last updated</value>
-        [DataMember(Name = "lastUpdated", EmitDefaultValue = true)]
-        public DateTimeOffset LastUpdated { get; private set; }
-
-        /// <summary>
-        /// Returns false as LastUpdated should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeLastUpdated()
-        {
-            return false;
-        }
         /// <summary>
         /// Resource set ID
         /// </summary>
@@ -195,15 +99,9 @@ namespace Okta.Sdk.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class CustomRole {\n");
-            sb.Append("  AssignmentType: ").Append(AssignmentType).Append("\n");
-            sb.Append("  Created: ").Append(Created).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  Label: ").Append(Label).Append("\n");
-            sb.Append("  LastUpdated: ").Append(LastUpdated).Append("\n");
+            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
             sb.Append("  ResourceSet: ").Append(ResourceSet).Append("\n");
             sb.Append("  Role: ").Append(Role).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("  Links: ").Append(Links).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -213,7 +111,7 @@ namespace Okta.Sdk.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public override string ToJson()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
@@ -239,49 +137,17 @@ namespace Okta.Sdk.Model
             {
                 return false;
             }
-            return 
-                (
-                    this.AssignmentType == input.AssignmentType ||
-                    this.AssignmentType.Equals(input.AssignmentType)
-                ) && 
-                (
-                    this.Created == input.Created ||
-                    (this.Created != null &&
-                    this.Created.Equals(input.Created))
-                ) && 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && 
-                (
-                    this.Label == input.Label ||
-                    (this.Label != null &&
-                    this.Label.Equals(input.Label))
-                ) && 
-                (
-                    this.LastUpdated == input.LastUpdated ||
-                    (this.LastUpdated != null &&
-                    this.LastUpdated.Equals(input.LastUpdated))
-                ) && 
+            return base.Equals(input) && 
                 (
                     this.ResourceSet == input.ResourceSet ||
                     (this.ResourceSet != null &&
                     this.ResourceSet.Equals(input.ResourceSet))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.Role == input.Role ||
                     (this.Role != null &&
                     this.Role.Equals(input.Role))
-                ) && 
-                (
-                    this.Status == input.Status ||
-                    this.Status.Equals(input.Status)
-                ) && 
-                (
-                    this.Type == input.Type ||
-                    this.Type.Equals(input.Type)
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.Links == input.Links ||
                     (this.Links != null &&
@@ -297,28 +163,8 @@ namespace Okta.Sdk.Model
         {
             unchecked // Overflow is fine, just wrap
             {
-                int hashCode = 41;
+                int hashCode = base.GetHashCode();
                 
-                if (this.AssignmentType != null)
-                {
-                    hashCode = (hashCode * 59) + this.AssignmentType.GetHashCode();
-                }
-                if (this.Created != null)
-                {
-                    hashCode = (hashCode * 59) + this.Created.GetHashCode();
-                }
-                if (this.Id != null)
-                {
-                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
-                }
-                if (this.Label != null)
-                {
-                    hashCode = (hashCode * 59) + this.Label.GetHashCode();
-                }
-                if (this.LastUpdated != null)
-                {
-                    hashCode = (hashCode * 59) + this.LastUpdated.GetHashCode();
-                }
                 if (this.ResourceSet != null)
                 {
                     hashCode = (hashCode * 59) + this.ResourceSet.GetHashCode();
@@ -326,14 +172,6 @@ namespace Okta.Sdk.Model
                 if (this.Role != null)
                 {
                     hashCode = (hashCode * 59) + this.Role.GetHashCode();
-                }
-                if (this.Status != null)
-                {
-                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
-                }
-                if (this.Type != null)
-                {
-                    hashCode = (hashCode * 59) + this.Type.GetHashCode();
                 }
                 if (this.Links != null)
                 {

@@ -37,10 +37,10 @@ namespace Okta.Sdk.Model
     /// </summary>
     [DataContract(Name = "ServiceAccount")]
     [JsonConverter(typeof(JsonSubtypes), "AccountType")]
-    [JsonSubtypes.KnownSubType(typeof(ServiceAccountDetailsAppAccount), "APP_ACCOUNT")]
-    [JsonSubtypes.KnownSubType(typeof(ServiceAccountDetailsOktaUserAccount), "OKTA_USER_ACCOUNT")]
-    [JsonSubtypes.KnownSubType(typeof(ServiceAccountDetailsAppAccount), "ServiceAccountDetailsAppAccount")]
-    [JsonSubtypes.KnownSubType(typeof(ServiceAccountDetailsOktaUserAccount), "ServiceAccountDetailsOktaUserAccount")]
+    [JsonSubtypes.KnownSubType(typeof(ServiceAccountDetailsAppAccount), "APP_ACCOUNT" == "~" ? null : "APP_ACCOUNT")]
+    [JsonSubtypes.KnownSubType(typeof(ServiceAccountDetailsOktaUserAccount), "OKTA_USER_ACCOUNT" == "~" ? null : "OKTA_USER_ACCOUNT")]
+    [JsonSubtypes.KnownSubType(typeof(ServiceAccountDetailsAppAccount), "ServiceAccountDetailsAppAccount" == "~" ? null : "ServiceAccountDetailsAppAccount")]
+    [JsonSubtypes.KnownSubType(typeof(ServiceAccountDetailsOktaUserAccount), "ServiceAccountDetailsOktaUserAccount" == "~" ? null : "ServiceAccountDetailsOktaUserAccount")]
     
     public partial class ServiceAccount : IEquatable<ServiceAccount>
     {

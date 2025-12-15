@@ -37,10 +37,10 @@ namespace Okta.Sdk.Model
     /// </summary>
     [DataContract(Name = "BehaviorRuleAnomalousIP")]
     [JsonConverter(typeof(JsonSubtypes), "Type")]
-    [JsonSubtypes.KnownSubType(typeof(BehaviorRuleAnomalousDevice), "ANOMALOUS_DEVICE")]
-    [JsonSubtypes.KnownSubType(typeof(BehaviorRuleAnomalousIP), "ANOMALOUS_IP")]
-    [JsonSubtypes.KnownSubType(typeof(BehaviorRuleAnomalousLocation), "ANOMALOUS_LOCATION")]
-    [JsonSubtypes.KnownSubType(typeof(BehaviorRuleVelocity), "VELOCITY")]
+    [JsonSubtypes.KnownSubType(typeof(BehaviorRuleAnomalousDevice), "ANOMALOUS_DEVICE" == "~" ? null : "ANOMALOUS_DEVICE")]
+    [JsonSubtypes.KnownSubType(typeof(BehaviorRuleAnomalousIP), "ANOMALOUS_IP" == "~" ? null : "ANOMALOUS_IP")]
+    [JsonSubtypes.KnownSubType(typeof(BehaviorRuleAnomalousLocation), "ANOMALOUS_LOCATION" == "~" ? null : "ANOMALOUS_LOCATION")]
+    [JsonSubtypes.KnownSubType(typeof(BehaviorRuleVelocity), "VELOCITY" == "~" ? null : "VELOCITY")]
     
     public partial class BehaviorRuleAnomalousIP : BehaviorRule, IEquatable<BehaviorRuleAnomalousIP>
     {

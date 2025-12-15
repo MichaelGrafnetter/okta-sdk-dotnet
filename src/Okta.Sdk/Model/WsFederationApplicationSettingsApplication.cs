@@ -36,7 +36,7 @@ namespace Okta.Sdk.Model
     /// </summary>
     [DataContract(Name = "WsFederationApplicationSettingsApplication")]
     
-    public partial class WsFederationApplicationSettingsApplication : IEquatable<WsFederationApplicationSettingsApplication>
+    public partial class WsFederationApplicationSettingsApplication : Dictionary<String, string>, IEquatable<WsFederationApplicationSettingsApplication>
     {
         /// <summary>
         /// Specifies the WS-Fed assertion attribute value for filtered groups. This attribute is only applied to Active Directory groups.
@@ -228,6 +228,7 @@ namespace Okta.Sdk.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class WsFederationApplicationSettingsApplication {\n");
+            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
             sb.Append("  AttributeStatements: ").Append(AttributeStatements).Append("\n");
             sb.Append("  AudienceRestriction: ").Append(AudienceRestriction).Append("\n");
             sb.Append("  AuthnContextClassRef: ").Append(AuthnContextClassRef).Append("\n");
@@ -248,7 +249,7 @@ namespace Okta.Sdk.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
@@ -274,59 +275,59 @@ namespace Okta.Sdk.Model
             {
                 return false;
             }
-            return 
+            return base.Equals(input) && 
                 (
                     this.AttributeStatements == input.AttributeStatements ||
                     (this.AttributeStatements != null &&
                     this.AttributeStatements.Equals(input.AttributeStatements))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.AudienceRestriction == input.AudienceRestriction ||
                     (this.AudienceRestriction != null &&
                     this.AudienceRestriction.Equals(input.AudienceRestriction))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.AuthnContextClassRef == input.AuthnContextClassRef ||
                     (this.AuthnContextClassRef != null &&
                     this.AuthnContextClassRef.Equals(input.AuthnContextClassRef))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.GroupFilter == input.GroupFilter ||
                     (this.GroupFilter != null &&
                     this.GroupFilter.Equals(input.GroupFilter))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.GroupName == input.GroupName ||
                     (this.GroupName != null &&
                     this.GroupName.Equals(input.GroupName))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.GroupValueFormat == input.GroupValueFormat ||
                     this.GroupValueFormat.Equals(input.GroupValueFormat)
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.NameIDFormat == input.NameIDFormat ||
                     (this.NameIDFormat != null &&
                     this.NameIDFormat.Equals(input.NameIDFormat))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.Realm == input.Realm ||
                     (this.Realm != null &&
                     this.Realm.Equals(input.Realm))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.SiteURL == input.SiteURL ||
                     (this.SiteURL != null &&
                     this.SiteURL.Equals(input.SiteURL))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.UsernameAttribute == input.UsernameAttribute ||
                     this.UsernameAttribute.Equals(input.UsernameAttribute)
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.WReplyOverride == input.WReplyOverride ||
                     this.WReplyOverride.Equals(input.WReplyOverride)
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.WReplyURL == input.WReplyURL ||
                     (this.WReplyURL != null &&
@@ -342,7 +343,7 @@ namespace Okta.Sdk.Model
         {
             unchecked // Overflow is fine, just wrap
             {
-                int hashCode = 41;
+                int hashCode = base.GetHashCode();
                 
                 if (this.AttributeStatements != null)
                 {

@@ -37,11 +37,11 @@ namespace Okta.Sdk.Model
     /// </summary>
     [DataContract(Name = "UserFactorPushTransactionWaitingNoNMC")]
     [JsonConverter(typeof(JsonSubtypes), "FactorResult")]
-    [JsonSubtypes.KnownSubType(typeof(UserFactorPushTransactionRejected), "REJECTED")]
-    [JsonSubtypes.KnownSubType(typeof(UserFactorPushTransaction), "SUCCESS")]
-    [JsonSubtypes.KnownSubType(typeof(UserFactorPushTransactionTimeout), "TIMEOUT")]
-    [JsonSubtypes.KnownSubType(typeof(UserFactorPushTransactionWaitingNoNMC), "WAITING")]
-    [JsonSubtypes.KnownSubType(typeof(UserFactorPushTransactionWaitingNMC), "WAITING (with number matching challenge)")]
+    [JsonSubtypes.KnownSubType(typeof(UserFactorPushTransactionRejected), "REJECTED" == "~" ? null : "REJECTED")]
+    [JsonSubtypes.KnownSubType(typeof(UserFactorPushTransaction), "SUCCESS" == "~" ? null : "SUCCESS")]
+    [JsonSubtypes.KnownSubType(typeof(UserFactorPushTransactionTimeout), "TIMEOUT" == "~" ? null : "TIMEOUT")]
+    [JsonSubtypes.KnownSubType(typeof(UserFactorPushTransactionWaitingNoNMC), "WAITING" == "~" ? null : "WAITING")]
+    [JsonSubtypes.KnownSubType(typeof(UserFactorPushTransactionWaitingNMC), "WAITING (with number matching challenge)" == "~" ? null : "WAITING (with number matching challenge)")]
     
     public partial class UserFactorPushTransactionWaitingNoNMC : UserFactorPushTransaction, IEquatable<UserFactorPushTransactionWaitingNoNMC>
     {

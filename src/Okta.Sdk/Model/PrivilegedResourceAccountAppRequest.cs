@@ -37,8 +37,8 @@ namespace Okta.Sdk.Model
     /// </summary>
     [DataContract(Name = "PrivilegedResourceAccountAppRequest")]
     [JsonConverter(typeof(JsonSubtypes), "ResourceType")]
-    [JsonSubtypes.KnownSubType(typeof(PrivilegedResourceAccountAppRequest), "APP_ACCOUNT")]
-    [JsonSubtypes.KnownSubType(typeof(PrivilegedResourceAccountOkta), "OKTA_USER_ACCOUNT")]
+    [JsonSubtypes.KnownSubType(typeof(PrivilegedResourceAccountAppRequest), "APP_ACCOUNT" == "~" ? null : "APP_ACCOUNT")]
+    [JsonSubtypes.KnownSubType(typeof(PrivilegedResourceAccountOkta), "OKTA_USER_ACCOUNT" == "~" ? null : "OKTA_USER_ACCOUNT")]
     
     public partial class PrivilegedResourceAccountAppRequest : PrivilegedResource, IEquatable<PrivilegedResourceAccountAppRequest>
     {

@@ -37,11 +37,11 @@ namespace Okta.Sdk.Model
     /// </summary>
     [DataContract(Name = "PrivilegedResource")]
     [JsonConverter(typeof(JsonSubtypes), "ResourceType")]
-    [JsonSubtypes.KnownSubType(typeof(PrivilegedResourceAccountAppRequest), "APP_ACCOUNT")]
-    [JsonSubtypes.KnownSubType(typeof(PrivilegedResourceAccountOkta), "OKTA_USER_ACCOUNT")]
-    [JsonSubtypes.KnownSubType(typeof(PrivilegedResourceAccountAppRequest), "PrivilegedResourceAccountAppRequest")]
-    [JsonSubtypes.KnownSubType(typeof(PrivilegedResourceAccountAppResponse), "PrivilegedResourceAccountAppResponse")]
-    [JsonSubtypes.KnownSubType(typeof(PrivilegedResourceAccountOkta), "PrivilegedResourceAccountOkta")]
+    [JsonSubtypes.KnownSubType(typeof(PrivilegedResourceAccountAppRequest), "APP_ACCOUNT" == "~" ? null : "APP_ACCOUNT")]
+    [JsonSubtypes.KnownSubType(typeof(PrivilegedResourceAccountOkta), "OKTA_USER_ACCOUNT" == "~" ? null : "OKTA_USER_ACCOUNT")]
+    [JsonSubtypes.KnownSubType(typeof(PrivilegedResourceAccountAppRequest), "PrivilegedResourceAccountAppRequest" == "~" ? null : "PrivilegedResourceAccountAppRequest")]
+    [JsonSubtypes.KnownSubType(typeof(PrivilegedResourceAccountAppResponse), "PrivilegedResourceAccountAppResponse" == "~" ? null : "PrivilegedResourceAccountAppResponse")]
+    [JsonSubtypes.KnownSubType(typeof(PrivilegedResourceAccountOkta), "PrivilegedResourceAccountOkta" == "~" ? null : "PrivilegedResourceAccountOkta")]
     
     public partial class PrivilegedResource : IEquatable<PrivilegedResource>
     {

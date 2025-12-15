@@ -37,8 +37,8 @@ namespace Okta.Sdk.Model
     /// </summary>
     [DataContract(Name = "LogStreamAwsPutSchema")]
     [JsonConverter(typeof(JsonSubtypes), "Type")]
-    [JsonSubtypes.KnownSubType(typeof(LogStreamAwsPutSchema), "aws_eventbridge")]
-    [JsonSubtypes.KnownSubType(typeof(LogStreamSplunkPutSchema), "splunk_cloud_logstreaming")]
+    [JsonSubtypes.KnownSubType(typeof(LogStreamAwsPutSchema), "aws_eventbridge" == "~" ? null : "aws_eventbridge")]
+    [JsonSubtypes.KnownSubType(typeof(LogStreamSplunkPutSchema), "splunk_cloud_logstreaming" == "~" ? null : "splunk_cloud_logstreaming")]
     
     public partial class LogStreamAwsPutSchema : LogStreamPutSchema, IEquatable<LogStreamAwsPutSchema>
     {

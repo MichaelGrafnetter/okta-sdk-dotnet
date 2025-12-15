@@ -37,11 +37,11 @@ namespace Okta.Sdk.Model
     /// </summary>
     [DataContract(Name = "DeviceAssuranceIOSPlatform")]
     [JsonConverter(typeof(JsonSubtypes), "Platform")]
-    [JsonSubtypes.KnownSubType(typeof(DeviceAssuranceAndroidPlatform), "ANDROID")]
-    [JsonSubtypes.KnownSubType(typeof(DeviceAssuranceChromeOSPlatform), "CHROMEOS")]
-    [JsonSubtypes.KnownSubType(typeof(DeviceAssuranceIOSPlatform), "IOS")]
-    [JsonSubtypes.KnownSubType(typeof(DeviceAssuranceMacOSPlatform), "MACOS")]
-    [JsonSubtypes.KnownSubType(typeof(DeviceAssuranceWindowsPlatform), "WINDOWS")]
+    [JsonSubtypes.KnownSubType(typeof(DeviceAssuranceAndroidPlatform), "ANDROID" == "~" ? null : "ANDROID")]
+    [JsonSubtypes.KnownSubType(typeof(DeviceAssuranceChromeOSPlatform), "CHROMEOS" == "~" ? null : "CHROMEOS")]
+    [JsonSubtypes.KnownSubType(typeof(DeviceAssuranceIOSPlatform), "IOS" == "~" ? null : "IOS")]
+    [JsonSubtypes.KnownSubType(typeof(DeviceAssuranceMacOSPlatform), "MACOS" == "~" ? null : "MACOS")]
+    [JsonSubtypes.KnownSubType(typeof(DeviceAssuranceWindowsPlatform), "WINDOWS" == "~" ? null : "WINDOWS")]
     
     public partial class DeviceAssuranceIOSPlatform : DeviceAssurance, IEquatable<DeviceAssuranceIOSPlatform>
     {

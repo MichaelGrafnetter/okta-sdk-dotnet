@@ -36,7 +36,7 @@ namespace Okta.Sdk.Model
     /// </summary>
     [DataContract(Name = "GoogleApplicationSettingsApplication")]
     
-    public partial class GoogleApplicationSettingsApplication : IEquatable<GoogleApplicationSettingsApplication>
+    public partial class GoogleApplicationSettingsApplication : Dictionary<String, string>, IEquatable<GoogleApplicationSettingsApplication>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="GoogleApplicationSettingsApplication" /> class.
@@ -66,6 +66,7 @@ namespace Okta.Sdk.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class GoogleApplicationSettingsApplication {\n");
+            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
             sb.Append("  Domain: ").Append(Domain).Append("\n");
             sb.Append("  RpId: ").Append(RpId).Append("\n");
             sb.Append("}\n");
@@ -76,7 +77,7 @@ namespace Okta.Sdk.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public string ToJson()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
@@ -102,12 +103,12 @@ namespace Okta.Sdk.Model
             {
                 return false;
             }
-            return 
+            return base.Equals(input) && 
                 (
                     this.Domain == input.Domain ||
                     (this.Domain != null &&
                     this.Domain.Equals(input.Domain))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.RpId == input.RpId ||
                     (this.RpId != null &&
@@ -123,7 +124,7 @@ namespace Okta.Sdk.Model
         {
             unchecked // Overflow is fine, just wrap
             {
-                int hashCode = 41;
+                int hashCode = base.GetHashCode();
                 
                 if (this.Domain != null)
                 {

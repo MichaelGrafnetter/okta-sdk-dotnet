@@ -26,6 +26,7 @@ using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
+using JsonSubTypes;
 using OpenAPIDateConverter = Okta.Sdk.Client.OpenAPIDateConverter;
 
 namespace Okta.Sdk.Model
@@ -35,47 +36,20 @@ namespace Okta.Sdk.Model
     /// Protocol settings for authentication using the [OAuth 2.0 Authorization Code flow](https://tools.ietf.org/html/rfc6749#section-4.1)
     /// </summary>
     [DataContract(Name = "ProtocolOAuth")]
+    [JsonConverter(typeof(JsonSubtypes), "Type")]
+    [JsonSubtypes.KnownSubType(typeof(ProtocolIdVerification), "ID_PROOFING" == "~" ? null : "ID_PROOFING")]
+    [JsonSubtypes.KnownSubType(typeof(ProtocolMtls), "MTLS" == "~" ? null : "MTLS")]
+    [JsonSubtypes.KnownSubType(typeof(ProtocolOAuth), "OAUTH2" == "~" ? null : "OAUTH2")]
+    [JsonSubtypes.KnownSubType(typeof(ProtocolOidc), "OIDC" == "~" ? null : "OIDC")]
+    [JsonSubtypes.KnownSubType(typeof(ProtocolSaml), "SAML2" == "~" ? null : "SAML2")]
     
-    public partial class ProtocolOAuth : IEquatable<ProtocolOAuth>
+    public partial class ProtocolOAuth : IdentityProviderProtocol, IEquatable<ProtocolOAuth>
     {
         /// <summary>
-        /// OAuth 2.0 Authorization Code flow
+        /// Initializes a new instance of the <see cref="ProtocolOAuth" /> class.
         /// </summary>
-        /// <value>OAuth 2.0 Authorization Code flow</value>
-        [JsonConverter(typeof(StringEnumSerializingConverter))]
-        public sealed class TypeEnum : StringEnum
-        {
-            /// <summary>
-            /// StringEnum OAUTH2 for value: OAUTH2
-            /// </summary>
-            
-            public static TypeEnum OAUTH2 = new TypeEnum("OAUTH2");
-
-
-            /// <summary>
-            /// Implicit operator declaration to accept and convert a string value as a <see cref="TypeEnum"/>
-            /// </summary>
-            /// <param name="value">The value to use</param>
-            public static implicit operator TypeEnum(string value) => new TypeEnum(value);
-
-            /// <summary>
-            /// Creates a new <see cref="Type"/> instance.
-            /// </summary>
-            /// <param name="value">The value to use.</param>
-            public TypeEnum(string value)
-                : base(value)
-            {
-            }
-        }
-
-
-        /// <summary>
-        /// OAuth 2.0 Authorization Code flow
-        /// </summary>
-        /// <value>OAuth 2.0 Authorization Code flow</value>
-        [DataMember(Name = "type", EmitDefaultValue = true)]
-        
-        public TypeEnum Type { get; set; }
+        [JsonConstructorAttribute]
+        public ProtocolOAuth() { }
         
         /// <summary>
         /// Gets or Sets Credentials
@@ -104,10 +78,10 @@ namespace Okta.Sdk.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class ProtocolOAuth {\n");
+            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
             sb.Append("  Credentials: ").Append(Credentials).Append("\n");
             sb.Append("  Endpoints: ").Append(Endpoints).Append("\n");
             sb.Append("  Scopes: ").Append(Scopes).Append("\n");
-            sb.Append("  Type: ").Append(Type).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -116,7 +90,7 @@ namespace Okta.Sdk.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public override string ToJson()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
@@ -142,26 +116,22 @@ namespace Okta.Sdk.Model
             {
                 return false;
             }
-            return 
+            return base.Equals(input) && 
                 (
                     this.Credentials == input.Credentials ||
                     (this.Credentials != null &&
                     this.Credentials.Equals(input.Credentials))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.Endpoints == input.Endpoints ||
                     (this.Endpoints != null &&
                     this.Endpoints.Equals(input.Endpoints))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.Scopes == input.Scopes ||
                     this.Scopes != null &&
                     input.Scopes != null &&
                     this.Scopes.SequenceEqual(input.Scopes)
-                ) && 
-                (
-                    this.Type == input.Type ||
-                    this.Type.Equals(input.Type)
                 );
         }
 
@@ -173,7 +143,7 @@ namespace Okta.Sdk.Model
         {
             unchecked // Overflow is fine, just wrap
             {
-                int hashCode = 41;
+                int hashCode = base.GetHashCode();
                 
                 if (this.Credentials != null)
                 {
@@ -186,10 +156,6 @@ namespace Okta.Sdk.Model
                 if (this.Scopes != null)
                 {
                     hashCode = (hashCode * 59) + this.Scopes.GetHashCode();
-                }
-                if (this.Type != null)
-                {
-                    hashCode = (hashCode * 59) + this.Type.GetHashCode();
                 }
                 return hashCode;
             }

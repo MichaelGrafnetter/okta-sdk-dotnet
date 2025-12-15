@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 <a name="assignroletogroup"></a>
 # **AssignRoleToGroup**
-> ListGroupAssignedRoles200ResponseInner AssignRoleToGroup (string groupId, AssignRoleToGroupRequest assignRoleRequest, bool? disableNotifications = null)
+> Role AssignRoleToGroup (string groupId, AssignRoleToGroupRequest assignRoleRequest, bool? disableNotifications = null)
 
 Assign a role to a group
 
@@ -47,7 +47,7 @@ namespace Example
             try
             {
                 // Assign a role to a group
-                ListGroupAssignedRoles200ResponseInner result = apiInstance.AssignRoleToGroup(groupId, assignRoleRequest, disableNotifications);
+                Role result = apiInstance.AssignRoleToGroup(groupId, assignRoleRequest, disableNotifications);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -71,7 +71,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListGroupAssignedRoles200ResponseInner**](ListGroupAssignedRoles200ResponseInner.md)
+[**Role**](Role.md)
 
 ### Authorization
 
@@ -97,7 +97,7 @@ Name | Type | Description  | Notes
 
 <a name="getgroupassignedrole"></a>
 # **GetGroupAssignedRole**
-> ListGroupAssignedRoles200ResponseInner GetGroupAssignedRole (string groupId, string roleAssignmentId)
+> Role GetGroupAssignedRole (string groupId, string roleAssignmentId)
 
 Retrieve a group role assignment
 
@@ -131,7 +131,7 @@ namespace Example
             try
             {
                 // Retrieve a group role assignment
-                ListGroupAssignedRoles200ResponseInner result = apiInstance.GetGroupAssignedRole(groupId, roleAssignmentId);
+                Role result = apiInstance.GetGroupAssignedRole(groupId, roleAssignmentId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ListGroupAssignedRoles200ResponseInner**](ListGroupAssignedRoles200ResponseInner.md)
+[**Role**](Role.md)
 
 ### Authorization
 
@@ -178,7 +178,7 @@ Name | Type | Description  | Notes
 
 <a name="listgroupassignedroles"></a>
 # **ListGroupAssignedRoles**
-> List&lt;ListGroupAssignedRoles200ResponseInner&gt; ListGroupAssignedRoles (string groupId, string expand = null)
+> List&lt;Role&gt; ListGroupAssignedRoles (string groupId, string expand = null)
 
 List all group role assignments
 
@@ -212,7 +212,7 @@ namespace Example
             try
             {
                 // List all group role assignments
-                List<ListGroupAssignedRoles200ResponseInner> result = apiInstance.ListGroupAssignedRoles(groupId, expand).ToListAsync();
+                List<Role> result = apiInstance.ListGroupAssignedRoles(groupId, expand).ToListAsync();
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -235,7 +235,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List&lt;ListGroupAssignedRoles200ResponseInner&gt;**](ListGroupAssignedRoles200ResponseInner.md)
+[**List&lt;Role&gt;**](Role.md)
 
 ### Authorization
 

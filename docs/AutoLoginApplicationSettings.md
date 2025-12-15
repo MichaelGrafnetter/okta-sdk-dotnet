@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **InlineHookId** | **string** | Identifier of an inline hook. Inline hooks are outbound calls from Okta to your own custom code, triggered at specific points in Okta process flows. They allow you to integrate custom functionality into those flows. See [Inline hooks](/openapi/okta-management/management/tag/InlineHook/). | [optional] 
 **Notes** | [**ApplicationSettingsNotes**](ApplicationSettingsNotes.md) |  | [optional] 
 **Notifications** | [**ApplicationSettingsNotifications**](ApplicationSettingsNotifications.md) |  | [optional] 
+**App** | **Dictionary&lt;string, string&gt;** |  | [optional] 
 **SignOn** | [**AutoLoginApplicationSettingsSignOn**](AutoLoginApplicationSettingsSignOn.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)

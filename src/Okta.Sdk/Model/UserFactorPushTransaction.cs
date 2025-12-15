@@ -37,15 +37,15 @@ namespace Okta.Sdk.Model
     /// </summary>
     [DataContract(Name = "UserFactorPushTransaction")]
     [JsonConverter(typeof(JsonSubtypes), "FactorResult")]
-    [JsonSubtypes.KnownSubType(typeof(UserFactorPushTransactionRejected), "REJECTED")]
-    [JsonSubtypes.KnownSubType(typeof(UserFactorPushTransaction), "SUCCESS")]
-    [JsonSubtypes.KnownSubType(typeof(UserFactorPushTransactionTimeout), "TIMEOUT")]
-    [JsonSubtypes.KnownSubType(typeof(UserFactorPushTransactionRejected), "UserFactorPushTransactionRejected")]
-    [JsonSubtypes.KnownSubType(typeof(UserFactorPushTransactionTimeout), "UserFactorPushTransactionTimeout")]
-    [JsonSubtypes.KnownSubType(typeof(UserFactorPushTransactionWaitingNMC), "UserFactorPushTransactionWaitingNMC")]
-    [JsonSubtypes.KnownSubType(typeof(UserFactorPushTransactionWaitingNoNMC), "UserFactorPushTransactionWaitingNoNMC")]
-    [JsonSubtypes.KnownSubType(typeof(UserFactorPushTransactionWaitingNoNMC), "WAITING")]
-    [JsonSubtypes.KnownSubType(typeof(UserFactorPushTransactionWaitingNMC), "WAITING (with number matching challenge)")]
+    [JsonSubtypes.KnownSubType(typeof(UserFactorPushTransactionRejected), "REJECTED" == "~" ? null : "REJECTED")]
+    [JsonSubtypes.KnownSubType(typeof(UserFactorPushTransaction), "SUCCESS" == "~" ? null : "SUCCESS")]
+    [JsonSubtypes.KnownSubType(typeof(UserFactorPushTransactionTimeout), "TIMEOUT" == "~" ? null : "TIMEOUT")]
+    [JsonSubtypes.KnownSubType(typeof(UserFactorPushTransactionRejected), "UserFactorPushTransactionRejected" == "~" ? null : "UserFactorPushTransactionRejected")]
+    [JsonSubtypes.KnownSubType(typeof(UserFactorPushTransactionTimeout), "UserFactorPushTransactionTimeout" == "~" ? null : "UserFactorPushTransactionTimeout")]
+    [JsonSubtypes.KnownSubType(typeof(UserFactorPushTransactionWaitingNMC), "UserFactorPushTransactionWaitingNMC" == "~" ? null : "UserFactorPushTransactionWaitingNMC")]
+    [JsonSubtypes.KnownSubType(typeof(UserFactorPushTransactionWaitingNoNMC), "UserFactorPushTransactionWaitingNoNMC" == "~" ? null : "UserFactorPushTransactionWaitingNoNMC")]
+    [JsonSubtypes.KnownSubType(typeof(UserFactorPushTransactionWaitingNoNMC), "WAITING" == "~" ? null : "WAITING")]
+    [JsonSubtypes.KnownSubType(typeof(UserFactorPushTransactionWaitingNMC), "WAITING (with number matching challenge)" == "~" ? null : "WAITING (with number matching challenge)")]
     
     public partial class UserFactorPushTransaction : IEquatable<UserFactorPushTransaction>
     {

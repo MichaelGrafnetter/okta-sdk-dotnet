@@ -37,13 +37,13 @@ namespace Okta.Sdk.Model
     /// </summary>
     [DataContract(Name = "UserFactorActivateResponse")]
     [JsonConverter(typeof(JsonSubtypes), "FactorType")]
-    [JsonSubtypes.KnownSubType(typeof(UserFactorCall), "call")]
-    [JsonSubtypes.KnownSubType(typeof(UserFactorEmail), "email")]
-    [JsonSubtypes.KnownSubType(typeof(UserFactorPush), "push")]
-    [JsonSubtypes.KnownSubType(typeof(UserFactorSMS), "sms")]
-    [JsonSubtypes.KnownSubType(typeof(UserFactorTokenSoftwareTOTP), "token:software:totp")]
-    [JsonSubtypes.KnownSubType(typeof(UserFactorU2F), "u2f")]
-    [JsonSubtypes.KnownSubType(typeof(UserFactorWebAuthn), "webauthn")]
+    [JsonSubtypes.KnownSubType(typeof(UserFactorCall), "call" == "~" ? null : "call")]
+    [JsonSubtypes.KnownSubType(typeof(UserFactorEmail), "email" == "~" ? null : "email")]
+    [JsonSubtypes.KnownSubType(typeof(UserFactorPush), "push" == "~" ? null : "push")]
+    [JsonSubtypes.KnownSubType(typeof(UserFactorSMS), "sms" == "~" ? null : "sms")]
+    [JsonSubtypes.KnownSubType(typeof(UserFactorTokenSoftwareTOTP), "token:software:totp" == "~" ? null : "token:software:totp")]
+    [JsonSubtypes.KnownSubType(typeof(UserFactorU2F), "u2f" == "~" ? null : "u2f")]
+    [JsonSubtypes.KnownSubType(typeof(UserFactorWebAuthn), "webauthn" == "~" ? null : "webauthn")]
     
     public partial class UserFactorActivateResponse : IEquatable<UserFactorActivateResponse>
     {

@@ -37,8 +37,8 @@ namespace Okta.Sdk.Model
     /// </summary>
     [DataContract(Name = "PostAuthSessionFailureActionsObject")]
     [JsonConverter(typeof(JsonSubtypes), "Action")]
-    [JsonSubtypes.KnownSubType(typeof(PostAuthSessionPolicyRuleRunWorkflow), "RUN_WORKFLOW")]
-    [JsonSubtypes.KnownSubType(typeof(PostAuthSessionPolicyRuleTerminateSession), "TERMINATE_SESSION")]
+    [JsonSubtypes.KnownSubType(typeof(PostAuthSessionPolicyRuleRunWorkflow), "RUN_WORKFLOW" == "~" ? null : "RUN_WORKFLOW")]
+    [JsonSubtypes.KnownSubType(typeof(PostAuthSessionPolicyRuleTerminateSession), "TERMINATE_SESSION" == "~" ? null : "TERMINATE_SESSION")]
     
     public partial class PostAuthSessionFailureActionsObject : IEquatable<PostAuthSessionFailureActionsObject>
     {

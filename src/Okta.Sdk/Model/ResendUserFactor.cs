@@ -37,9 +37,9 @@ namespace Okta.Sdk.Model
     /// </summary>
     [DataContract(Name = "ResendUserFactor")]
     [JsonConverter(typeof(JsonSubtypes), "FactorType")]
-    [JsonSubtypes.KnownSubType(typeof(UserFactorCall), "call")]
-    [JsonSubtypes.KnownSubType(typeof(UserFactorEmail), "email")]
-    [JsonSubtypes.KnownSubType(typeof(UserFactorSMS), "sms")]
+    [JsonSubtypes.KnownSubType(typeof(UserFactorCall), "call" == "~" ? null : "call")]
+    [JsonSubtypes.KnownSubType(typeof(UserFactorEmail), "email" == "~" ? null : "email")]
+    [JsonSubtypes.KnownSubType(typeof(UserFactorSMS), "sms" == "~" ? null : "sms")]
     
     public partial class ResendUserFactor : IEquatable<ResendUserFactor>
     {

@@ -143,6 +143,13 @@ namespace Okta.Sdk.Model
         public string Kid { get; set; }
 
         /// <summary>
+        /// Acceptable use of the JSON Web Key
+        /// </summary>
+        /// <value>Acceptable use of the JSON Web Key</value>
+        [DataMember(Name = "use", EmitDefaultValue = true)]
+        public string Use { get; set; }
+
+        /// <summary>
         /// Timestamp when the OAuth 2.0 client JSON Web Key was created
         /// </summary>
         /// <value>Timestamp when the OAuth 2.0 client JSON Web Key was created</value>
@@ -206,6 +213,7 @@ namespace Okta.Sdk.Model
             sb.Append("  Y: ").Append(Y).Append("\n");
             sb.Append("  Kid: ").Append(Kid).Append("\n");
             sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  Use: ").Append(Use).Append("\n");
             sb.Append("  Created: ").Append(Created).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  LastUpdated: ").Append(LastUpdated).Append("\n");
@@ -269,6 +277,11 @@ namespace Okta.Sdk.Model
                     this.Status.Equals(input.Status)
                 ) && 
                 (
+                    this.Use == input.Use ||
+                    (this.Use != null &&
+                    this.Use.Equals(input.Use))
+                ) && 
+                (
                     this.Created == input.Created ||
                     (this.Created != null &&
                     this.Created.Equals(input.Created))
@@ -319,6 +332,10 @@ namespace Okta.Sdk.Model
                 if (this.Status != null)
                 {
                     hashCode = (hashCode * 59) + this.Status.GetHashCode();
+                }
+                if (this.Use != null)
+                {
+                    hashCode = (hashCode * 59) + this.Use.GetHashCode();
                 }
                 if (this.Created != null)
                 {
