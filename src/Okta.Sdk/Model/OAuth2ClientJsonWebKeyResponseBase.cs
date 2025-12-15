@@ -132,6 +132,50 @@ namespace Okta.Sdk.Model
         [DataMember(Name = "status", EmitDefaultValue = true)]
         
         public StatusEnum Status { get; set; }
+        /// <summary>
+        /// Acceptable use of the JSON Web Key
+        /// </summary>
+        /// <value>Acceptable use of the JSON Web Key</value>
+        [JsonConverter(typeof(StringEnumSerializingConverter))]
+        public sealed class UseEnum : StringEnum
+        {
+            /// <summary>
+            /// StringEnum Sig for value: sig
+            /// </summary>
+            
+            public static UseEnum Sig = new UseEnum("sig");
+
+            /// <summary>
+            /// StringEnum Enc for value: enc
+            /// </summary>
+            
+            public static UseEnum Enc = new UseEnum("enc");
+
+
+            /// <summary>
+            /// Implicit operator declaration to accept and convert a string value as a <see cref="UseEnum"/>
+            /// </summary>
+            /// <param name="value">The value to use</param>
+            public static implicit operator UseEnum(string value) => new UseEnum(value);
+
+            /// <summary>
+            /// Creates a new <see cref="Use"/> instance.
+            /// </summary>
+            /// <param name="value">The value to use.</param>
+            public UseEnum(string value)
+                : base(value)
+            {
+            }
+        }
+
+
+        /// <summary>
+        /// Acceptable use of the JSON Web Key
+        /// </summary>
+        /// <value>Acceptable use of the JSON Web Key</value>
+        [DataMember(Name = "use", EmitDefaultValue = true)]
+        
+        public UseEnum Use { get; set; }
         
         /// <summary>
         /// Timestamp when the OAuth 2.0 client JSON Web Key was created
@@ -184,13 +228,6 @@ namespace Okta.Sdk.Model
         /// <value>Unique identifier of the JSON Web Key in the OAuth 2.0 client&#39;s JWKS</value>
         [DataMember(Name = "kid", EmitDefaultValue = true)]
         public string Kid { get; set; }
-
-        /// <summary>
-        /// Acceptable use of the JSON Web Key
-        /// </summary>
-        /// <value>Acceptable use of the JSON Web Key</value>
-        [DataMember(Name = "use", EmitDefaultValue = true)]
-        public string Use { get; set; }
 
         /// <summary>
         /// Gets or Sets Links
@@ -279,8 +316,7 @@ namespace Okta.Sdk.Model
                 ) && 
                 (
                     this.Use == input.Use ||
-                    (this.Use != null &&
-                    this.Use.Equals(input.Use))
+                    this.Use.Equals(input.Use)
                 ) && 
                 (
                     this.Links == input.Links ||

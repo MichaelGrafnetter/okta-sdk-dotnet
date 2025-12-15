@@ -67010,7 +67010,6 @@ components:
             - ACTIVE
             - INACTIVE
           description: Status of the OAuth 2.0 client JSON Web Key
-          example: ACTIVE
           nullable: false
           default: ACTIVE
         kid:
@@ -67021,8 +67020,10 @@ components:
         use:
           type: string
           description: Acceptable use of the JSON Web Key
-          example: sig
           nullable: false
+          enum:
+            - sig
+            - enc
         _links:
           $ref: '#/components/schemas/OAuthClientSecretLinks'
           readOnly: true
