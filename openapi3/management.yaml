@@ -2537,9 +2537,7 @@ paths:
               schema:
                 type: array
                 items:
-                  oneOf:
-                    - $ref: '#/components/schemas/OAuth2ClientJsonSigningKeyResponse'
-                    - $ref: '#/components/schemas/OAuth2ClientJsonEncryptionKeyResponse'
+                  $ref: '#/components/schemas/OAuth2ClientJsonWebKeyResponseBase'
               examples:
                 OAuthClientJsonWebKeyListResponseExample:
                   $ref: '#/components/examples/oAuthClientJsonWebKeyListResponse'
@@ -2587,9 +2585,7 @@ paths:
           content:
             application/json:
               schema:
-                oneOf:
-                  - $ref: '#/components/schemas/OAuth2ClientJsonSigningKeyResponse'
-                  - $ref: '#/components/schemas/OAuth2ClientJsonEncryptionKeyResponse'
+                $ref: '#/components/schemas/OAuth2ClientJsonWebKeyResponseBase'
               examples:
                 newOAuth2ClientJsonWebKeyResponse:
                   $ref: '#/components/examples/oAuthClientJsonWebKey'
@@ -2643,10 +2639,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                oneOf:
-                  - $ref: '#/components/schemas/OAuth2ClientJsonSigningKeyResponse'
-                  - $ref: '#/components/schemas/OAuth2ClientJsonEncryptionKeyResponse'
+                $ref: '#/components/schemas/OAuth2ClientJsonWebKeyResponseBase'
               examples:
                 OAuthClientJsonWebKeyResponseExample:
                   $ref: '#/components/examples/oAuthClientJsonWebKey'
@@ -2716,9 +2709,7 @@ paths:
           content:
             application/json:
               schema:
-                oneOf:
-                  - $ref: '#/components/schemas/OAuth2ClientJsonSigningKeyResponse'
-                  - $ref: '#/components/schemas/OAuth2ClientJsonEncryptionKeyResponse'
+                $ref: '#/components/schemas/OAuth2ClientJsonWebKeyResponseBase'
               examples:
                 activateOAuth2ClientJsonWebKeyResponse:
                   $ref: '#/components/examples/oAuthClientJsonWebKey'
@@ -66863,41 +66854,6 @@ components:
           nullable: false
           enum:
             - enc
-    OAuth2ClientJsonEncryptionKeyResponse:
-      title: Encryption Key
-      allOf:
-        - $ref: '#/components/schemas/OAuth2ClientJsonWebKeyRequestBase'
-        - $ref: '#/components/schemas/OAuth2ClientJsonWebKeyResponseBase'
-      description: <x-lifecycle-container><x-lifecycle class="ea"></x-lifecycle></x-lifecycle-container>A [JSON Web Key (JWK)](https://tools.ietf.org/html/rfc7517) is a JSON representation of a cryptographic key. Okta uses an encryption key to encrypt an ID token JWT minted by the org authorization server or custom authorization server. Okta supports only RSA keys for encrypting tokens.
-      x-okta-lifecycle:
-        lifecycle: EA
-        isGenerallyAvailable: true
-      type: object
-      properties:
-        e:
-          type: string
-          description: RSA key value (exponent) for key binding
-          example: AQAB
-          nullable: false
-        kty:
-          type: string
-          description: Cryptographic algorithm family for the certificate's key pair
-          example: RSA
-          nullable: false
-          enum:
-            - RSA
-        'n':
-          type: string
-          description: RSA key value (modulus) for key binding
-          example: mkC6yAJVvFwUlmM9gKjb2d-YK5qHFt-mXSsbjWKKs4EfNm-BoQeeovBZtSACyaqLc8IYFTPEURFcbDQ9DkAL04uUIRD2gaHYY7uK0jsluEaXGq2RAIsmzAwNTzkiDw4q9pDL_q7n0f_SDt1TsMaMQayB6bU5jWsmqcWJ8MCRJ1aJMjZ16un5UVx51IIeCbe4QRDxEXGAvYNczsBoZxspDt28esSpq5W0dBFxcyGVudyl54Er3FzAguhgfMVjH-bUec9j2Tl40qDTktrYgYfxz9pfjm01Hl4WYP1YQxeETpSL7cQ5Ihz4jGDtHUEOcZ4GfJrPzrGpUrak8Qp5xcwCqQ
-          nullable: false
-        use:
-          type: string
-          description: Acceptable use of the JSON Web Key
-          example: enc
-          nullable: false
-          enum:
-            - enc
     OAuth2ClientJsonSigningKeyRequest:
       title: Signing Key
       oneOf:
@@ -66934,14 +66890,13 @@ components:
       title: EC Signing Key
       description: An EC signing key
       allOf:
-        - $ref: '#/components/schemas/OAuth2ClientJsonWebKeyRequestBase'
         - $ref: '#/components/schemas/OAuth2ClientJsonWebKeyResponseBase'
       type: object
       properties:
         kty:
           type: string
           description: Cryptographic algorithm family for the certificate's key pair
-          example: RSA
+          example: EC
           nullable: false
           enum:
             - EC
@@ -67009,7 +66964,14 @@ components:
           example: sig
           nullable: false
     OAuth2ClientJsonWebKeyResponseBase:
+      title: OAuth 2.0 Client JSON Web Key Response
+      description: A [JSON Web Key (JWK)](https://tools.ietf.org/html/rfc7517) is a JSON representation of a cryptographic key used by an OAuth 2.0 client.
       type: object
+      discriminator:
+        propertyName: kty
+        mapping:
+          RSA: '#/components/schemas/OAuth2ClientJsonWebKeyRsaResponse'
+          EC: '#/components/schemas/OAuth2ClientJsonWebKeyECResponse'
       properties:
         created:
           type: string
@@ -67028,6 +66990,31 @@ components:
           description: Timestamp when the OAuth 2.0 client JSON Web Key was updated
           example: '2023-02-21T20:08:24.000Z'
           readOnly: true
+          nullable: false
+        kty:
+          type: string
+          description: Cryptographic algorithm family for the certificate's key pair
+          enum:
+            - RSA
+            - EC
+        status:
+          type: string
+          enum:
+            - ACTIVE
+            - INACTIVE
+          description: Status of the OAuth 2.0 client JSON Web Key
+          example: ACTIVE
+          nullable: false
+          default: ACTIVE
+        kid:
+          type: string
+          description: Unique identifier of the JSON Web Key in the OAuth 2.0 client's JWKS
+          example: SIMcCQNY3uwXoW3y0vf6VxiBb5n9pf8L2fK8d-FIbm4
+          nullable: true
+        use:
+          type: string
+          description: Acceptable use of the JSON Web Key
+          example: sig
           nullable: false
         _links:
           $ref: '#/components/schemas/OAuthClientSecretLinks'
@@ -67061,7 +67048,6 @@ components:
       title: RSA Signing Key
       description: An RSA signing key
       allOf:
-        - $ref: '#/components/schemas/OAuth2ClientJsonWebKeyRequestBase'
         - $ref: '#/components/schemas/OAuth2ClientJsonWebKeyResponseBase'
       type: object
       properties:
@@ -68870,9 +68856,7 @@ components:
         keys:
           type: array
           items:
-            oneOf:
-              - $ref: '#/components/schemas/OAuth2ClientJsonSigningKeyResponse'
-              - $ref: '#/components/schemas/OAuth2ClientJsonEncryptionKeyResponse'
+            $ref: '#/components/schemas/OAuth2ClientJsonWebKeyResponseBase'
     OpenIdConnectApplicationSettingsRefreshToken:
       description: |
         Refresh token configuration for an OAuth 2.0 client
