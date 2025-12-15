@@ -26,6 +26,7 @@ using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
+using JsonSubTypes;
 using OpenAPIDateConverter = Okta.Sdk.Client.OpenAPIDateConverter;
 
 namespace Okta.Sdk.Model
@@ -35,8 +36,11 @@ namespace Okta.Sdk.Model
     /// An RSA signing key
     /// </summary>
     [DataContract(Name = "OAuth2ClientJsonWebKeyRsaResponse")]
+    [JsonConverter(typeof(JsonSubtypes), "Kty")]
+    [JsonSubtypes.KnownSubType(typeof(OAuth2ClientJsonWebKeyECResponse), "EC" == "~" ? null : "EC")]
+    [JsonSubtypes.KnownSubType(typeof(OAuth2ClientJsonWebKeyRsaResponse), "RSA" == "~" ? null : "RSA")]
     
-    public partial class OAuth2ClientJsonWebKeyRsaResponse : IEquatable<OAuth2ClientJsonWebKeyRsaResponse>
+    public partial class OAuth2ClientJsonWebKeyRsaResponse : OAuth2ClientJsonWebKeyResponseBase, IEquatable<OAuth2ClientJsonWebKeyRsaResponse>
     {
         /// <summary>
         /// Cryptographic algorithm family for the certificate&#39;s key pair
@@ -76,50 +80,6 @@ namespace Okta.Sdk.Model
         [DataMember(Name = "kty", EmitDefaultValue = true)]
         
         public KtyEnum Kty { get; set; }
-        /// <summary>
-        /// Status of the OAuth 2.0 client JSON Web Key
-        /// </summary>
-        /// <value>Status of the OAuth 2.0 client JSON Web Key</value>
-        [JsonConverter(typeof(StringEnumSerializingConverter))]
-        public sealed class StatusEnum : StringEnum
-        {
-            /// <summary>
-            /// StringEnum ACTIVE for value: ACTIVE
-            /// </summary>
-            
-            public static StatusEnum ACTIVE = new StatusEnum("ACTIVE");
-
-            /// <summary>
-            /// StringEnum INACTIVE for value: INACTIVE
-            /// </summary>
-            
-            public static StatusEnum INACTIVE = new StatusEnum("INACTIVE");
-
-
-            /// <summary>
-            /// Implicit operator declaration to accept and convert a string value as a <see cref="StatusEnum"/>
-            /// </summary>
-            /// <param name="value">The value to use</param>
-            public static implicit operator StatusEnum(string value) => new StatusEnum(value);
-
-            /// <summary>
-            /// Creates a new <see cref="Status"/> instance.
-            /// </summary>
-            /// <param name="value">The value to use.</param>
-            public StatusEnum(string value)
-                : base(value)
-            {
-            }
-        }
-
-
-        /// <summary>
-        /// Status of the OAuth 2.0 client JSON Web Key
-        /// </summary>
-        /// <value>Status of the OAuth 2.0 client JSON Web Key</value>
-        [DataMember(Name = "status", EmitDefaultValue = true)]
-        
-        public StatusEnum Status { get; set; }
         
         /// <summary>
         /// RSA key value (exponent) for key binding
@@ -136,71 +96,6 @@ namespace Okta.Sdk.Model
         public string N { get; set; }
 
         /// <summary>
-        /// Unique identifier of the JSON Web Key in the OAUth 2.0 client&#39;s JWKS
-        /// </summary>
-        /// <value>Unique identifier of the JSON Web Key in the OAUth 2.0 client&#39;s JWKS</value>
-        [DataMember(Name = "kid", EmitDefaultValue = true)]
-        public string Kid { get; set; }
-
-        /// <summary>
-        /// Acceptable use of the JSON Web Key
-        /// </summary>
-        /// <value>Acceptable use of the JSON Web Key</value>
-        [DataMember(Name = "use", EmitDefaultValue = true)]
-        public string Use { get; set; }
-
-        /// <summary>
-        /// Timestamp when the OAuth 2.0 client JSON Web Key was created
-        /// </summary>
-        /// <value>Timestamp when the OAuth 2.0 client JSON Web Key was created</value>
-        [DataMember(Name = "created", EmitDefaultValue = true)]
-        public string Created { get; private set; }
-
-        /// <summary>
-        /// Returns false as Created should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeCreated()
-        {
-            return false;
-        }
-        /// <summary>
-        /// The unique ID of the OAuth Client JSON Web Key
-        /// </summary>
-        /// <value>The unique ID of the OAuth Client JSON Web Key</value>
-        [DataMember(Name = "id", EmitDefaultValue = true)]
-        public string Id { get; private set; }
-
-        /// <summary>
-        /// Returns false as Id should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeId()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Timestamp when the OAuth 2.0 client JSON Web Key was updated
-        /// </summary>
-        /// <value>Timestamp when the OAuth 2.0 client JSON Web Key was updated</value>
-        [DataMember(Name = "lastUpdated", EmitDefaultValue = true)]
-        public string LastUpdated { get; private set; }
-
-        /// <summary>
-        /// Returns false as LastUpdated should not be serialized given that it's read-only.
-        /// </summary>
-        /// <returns>false (boolean)</returns>
-        public bool ShouldSerializeLastUpdated()
-        {
-            return false;
-        }
-        /// <summary>
-        /// Gets or Sets Links
-        /// </summary>
-        [DataMember(Name = "_links", EmitDefaultValue = true)]
-        public OAuthClientSecretLinks Links { get; set; }
-
-        /// <summary>
         /// Returns the string presentation of the object
         /// </summary>
         /// <returns>String presentation of the object</returns>
@@ -208,16 +103,10 @@ namespace Okta.Sdk.Model
         {
             StringBuilder sb = new StringBuilder();
             sb.Append("class OAuth2ClientJsonWebKeyRsaResponse {\n");
+            sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
             sb.Append("  E: ").Append(E).Append("\n");
             sb.Append("  Kty: ").Append(Kty).Append("\n");
             sb.Append("  N: ").Append(N).Append("\n");
-            sb.Append("  Kid: ").Append(Kid).Append("\n");
-            sb.Append("  Status: ").Append(Status).Append("\n");
-            sb.Append("  Use: ").Append(Use).Append("\n");
-            sb.Append("  Created: ").Append(Created).Append("\n");
-            sb.Append("  Id: ").Append(Id).Append("\n");
-            sb.Append("  LastUpdated: ").Append(LastUpdated).Append("\n");
-            sb.Append("  Links: ").Append(Links).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -226,7 +115,7 @@ namespace Okta.Sdk.Model
         /// Returns the JSON string presentation of the object
         /// </summary>
         /// <returns>JSON string presentation of the object</returns>
-        public virtual string ToJson()
+        public override string ToJson()
         {
             return Newtonsoft.Json.JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.Indented);
         }
@@ -252,54 +141,20 @@ namespace Okta.Sdk.Model
             {
                 return false;
             }
-            return 
+            return base.Equals(input) && 
                 (
                     this.E == input.E ||
                     (this.E != null &&
                     this.E.Equals(input.E))
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.Kty == input.Kty ||
                     this.Kty.Equals(input.Kty)
-                ) && 
+                ) && base.Equals(input) && 
                 (
                     this.N == input.N ||
                     (this.N != null &&
                     this.N.Equals(input.N))
-                ) && 
-                (
-                    this.Kid == input.Kid ||
-                    (this.Kid != null &&
-                    this.Kid.Equals(input.Kid))
-                ) && 
-                (
-                    this.Status == input.Status ||
-                    this.Status.Equals(input.Status)
-                ) && 
-                (
-                    this.Use == input.Use ||
-                    (this.Use != null &&
-                    this.Use.Equals(input.Use))
-                ) && 
-                (
-                    this.Created == input.Created ||
-                    (this.Created != null &&
-                    this.Created.Equals(input.Created))
-                ) && 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
-                ) && 
-                (
-                    this.LastUpdated == input.LastUpdated ||
-                    (this.LastUpdated != null &&
-                    this.LastUpdated.Equals(input.LastUpdated))
-                ) && 
-                (
-                    this.Links == input.Links ||
-                    (this.Links != null &&
-                    this.Links.Equals(input.Links))
                 );
         }
 
@@ -311,7 +166,7 @@ namespace Okta.Sdk.Model
         {
             unchecked // Overflow is fine, just wrap
             {
-                int hashCode = 41;
+                int hashCode = base.GetHashCode();
                 
                 if (this.E != null)
                 {
@@ -324,34 +179,6 @@ namespace Okta.Sdk.Model
                 if (this.N != null)
                 {
                     hashCode = (hashCode * 59) + this.N.GetHashCode();
-                }
-                if (this.Kid != null)
-                {
-                    hashCode = (hashCode * 59) + this.Kid.GetHashCode();
-                }
-                if (this.Status != null)
-                {
-                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
-                }
-                if (this.Use != null)
-                {
-                    hashCode = (hashCode * 59) + this.Use.GetHashCode();
-                }
-                if (this.Created != null)
-                {
-                    hashCode = (hashCode * 59) + this.Created.GetHashCode();
-                }
-                if (this.Id != null)
-                {
-                    hashCode = (hashCode * 59) + this.Id.GetHashCode();
-                }
-                if (this.LastUpdated != null)
-                {
-                    hashCode = (hashCode * 59) + this.LastUpdated.GetHashCode();
-                }
-                if (this.Links != null)
-                {
-                    hashCode = (hashCode * 59) + this.Links.GetHashCode();
                 }
                 return hashCode;
             }

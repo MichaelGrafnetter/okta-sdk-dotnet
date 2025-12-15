@@ -26,18 +26,112 @@ using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
+using JsonSubTypes;
 using OpenAPIDateConverter = Okta.Sdk.Client.OpenAPIDateConverter;
 
 namespace Okta.Sdk.Model
 {
     /// <summary>
     /// Template: ModelGeneric
-    /// OAuth2ClientJsonWebKeyResponseBase
+    /// A [JSON Web Key (JWK)](https://tools.ietf.org/html/rfc7517) is a JSON representation of a cryptographic key used by an OAuth 2.0 client.
     /// </summary>
     [DataContract(Name = "OAuth2ClientJsonWebKeyResponseBase")]
+    [JsonConverter(typeof(JsonSubtypes), "Kty")]
+    [JsonSubtypes.KnownSubType(typeof(OAuth2ClientJsonWebKeyECResponse), "EC" == "~" ? null : "EC")]
+    [JsonSubtypes.KnownSubType(typeof(OAuth2ClientJsonWebKeyECResponse), "OAuth2ClientJsonWebKeyECResponse" == "~" ? null : "OAuth2ClientJsonWebKeyECResponse")]
+    [JsonSubtypes.KnownSubType(typeof(OAuth2ClientJsonWebKeyRsaResponse), "OAuth2ClientJsonWebKeyRsaResponse" == "~" ? null : "OAuth2ClientJsonWebKeyRsaResponse")]
+    [JsonSubtypes.KnownSubType(typeof(OAuth2ClientJsonWebKeyRsaResponse), "RSA" == "~" ? null : "RSA")]
     
     public partial class OAuth2ClientJsonWebKeyResponseBase : IEquatable<OAuth2ClientJsonWebKeyResponseBase>
     {
+        /// <summary>
+        /// Cryptographic algorithm family for the certificate&#39;s key pair
+        /// </summary>
+        /// <value>Cryptographic algorithm family for the certificate&#39;s key pair</value>
+        [JsonConverter(typeof(StringEnumSerializingConverter))]
+        public sealed class KtyEnum : StringEnum
+        {
+            /// <summary>
+            /// StringEnum RSA for value: RSA
+            /// </summary>
+            
+            public static KtyEnum RSA = new KtyEnum("RSA");
+
+            /// <summary>
+            /// StringEnum EC for value: EC
+            /// </summary>
+            
+            public static KtyEnum EC = new KtyEnum("EC");
+
+
+            /// <summary>
+            /// Implicit operator declaration to accept and convert a string value as a <see cref="KtyEnum"/>
+            /// </summary>
+            /// <param name="value">The value to use</param>
+            public static implicit operator KtyEnum(string value) => new KtyEnum(value);
+
+            /// <summary>
+            /// Creates a new <see cref="Kty"/> instance.
+            /// </summary>
+            /// <param name="value">The value to use.</param>
+            public KtyEnum(string value)
+                : base(value)
+            {
+            }
+        }
+
+
+        /// <summary>
+        /// Cryptographic algorithm family for the certificate&#39;s key pair
+        /// </summary>
+        /// <value>Cryptographic algorithm family for the certificate&#39;s key pair</value>
+        [DataMember(Name = "kty", EmitDefaultValue = true)]
+        
+        public KtyEnum Kty { get; set; }
+        /// <summary>
+        /// Status of the OAuth 2.0 client JSON Web Key
+        /// </summary>
+        /// <value>Status of the OAuth 2.0 client JSON Web Key</value>
+        [JsonConverter(typeof(StringEnumSerializingConverter))]
+        public sealed class StatusEnum : StringEnum
+        {
+            /// <summary>
+            /// StringEnum ACTIVE for value: ACTIVE
+            /// </summary>
+            
+            public static StatusEnum ACTIVE = new StatusEnum("ACTIVE");
+
+            /// <summary>
+            /// StringEnum INACTIVE for value: INACTIVE
+            /// </summary>
+            
+            public static StatusEnum INACTIVE = new StatusEnum("INACTIVE");
+
+
+            /// <summary>
+            /// Implicit operator declaration to accept and convert a string value as a <see cref="StatusEnum"/>
+            /// </summary>
+            /// <param name="value">The value to use</param>
+            public static implicit operator StatusEnum(string value) => new StatusEnum(value);
+
+            /// <summary>
+            /// Creates a new <see cref="Status"/> instance.
+            /// </summary>
+            /// <param name="value">The value to use.</param>
+            public StatusEnum(string value)
+                : base(value)
+            {
+            }
+        }
+
+
+        /// <summary>
+        /// Status of the OAuth 2.0 client JSON Web Key
+        /// </summary>
+        /// <value>Status of the OAuth 2.0 client JSON Web Key</value>
+        [DataMember(Name = "status", EmitDefaultValue = true)]
+        
+        public StatusEnum Status { get; set; }
         
         /// <summary>
         /// Timestamp when the OAuth 2.0 client JSON Web Key was created
@@ -85,6 +179,20 @@ namespace Okta.Sdk.Model
             return false;
         }
         /// <summary>
+        /// Unique identifier of the JSON Web Key in the OAuth 2.0 client&#39;s JWKS
+        /// </summary>
+        /// <value>Unique identifier of the JSON Web Key in the OAuth 2.0 client&#39;s JWKS</value>
+        [DataMember(Name = "kid", EmitDefaultValue = true)]
+        public string Kid { get; set; }
+
+        /// <summary>
+        /// Acceptable use of the JSON Web Key
+        /// </summary>
+        /// <value>Acceptable use of the JSON Web Key</value>
+        [DataMember(Name = "use", EmitDefaultValue = true)]
+        public string Use { get; set; }
+
+        /// <summary>
         /// Gets or Sets Links
         /// </summary>
         [DataMember(Name = "_links", EmitDefaultValue = true)]
@@ -101,6 +209,10 @@ namespace Okta.Sdk.Model
             sb.Append("  Created: ").Append(Created).Append("\n");
             sb.Append("  Id: ").Append(Id).Append("\n");
             sb.Append("  LastUpdated: ").Append(LastUpdated).Append("\n");
+            sb.Append("  Kty: ").Append(Kty).Append("\n");
+            sb.Append("  Status: ").Append(Status).Append("\n");
+            sb.Append("  Kid: ").Append(Kid).Append("\n");
+            sb.Append("  Use: ").Append(Use).Append("\n");
             sb.Append("  Links: ").Append(Links).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -153,6 +265,24 @@ namespace Okta.Sdk.Model
                     this.LastUpdated.Equals(input.LastUpdated))
                 ) && 
                 (
+                    this.Kty == input.Kty ||
+                    this.Kty.Equals(input.Kty)
+                ) && 
+                (
+                    this.Status == input.Status ||
+                    this.Status.Equals(input.Status)
+                ) && 
+                (
+                    this.Kid == input.Kid ||
+                    (this.Kid != null &&
+                    this.Kid.Equals(input.Kid))
+                ) && 
+                (
+                    this.Use == input.Use ||
+                    (this.Use != null &&
+                    this.Use.Equals(input.Use))
+                ) && 
+                (
                     this.Links == input.Links ||
                     (this.Links != null &&
                     this.Links.Equals(input.Links))
@@ -180,6 +310,22 @@ namespace Okta.Sdk.Model
                 if (this.LastUpdated != null)
                 {
                     hashCode = (hashCode * 59) + this.LastUpdated.GetHashCode();
+                }
+                if (this.Kty != null)
+                {
+                    hashCode = (hashCode * 59) + this.Kty.GetHashCode();
+                }
+                if (this.Status != null)
+                {
+                    hashCode = (hashCode * 59) + this.Status.GetHashCode();
+                }
+                if (this.Kid != null)
+                {
+                    hashCode = (hashCode * 59) + this.Kid.GetHashCode();
+                }
+                if (this.Use != null)
+                {
+                    hashCode = (hashCode * 59) + this.Use.GetHashCode();
                 }
                 if (this.Links != null)
                 {

@@ -43,7 +43,7 @@ namespace Okta.Sdk.Model
         /// Gets or Sets Keys
         /// </summary>
         [DataMember(Name = "keys", EmitDefaultValue = true)]
-        public List<ListJwk200ResponseInner> Keys { get; set; }
+        public List<OAuth2ClientJsonWebKeyResponseBase> Keys { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object

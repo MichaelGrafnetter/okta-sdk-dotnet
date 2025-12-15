@@ -43,8 +43,8 @@ namespace Okta.Sdk.Api
         /// <param name="appId">Application ID</param>
         /// <param name="keyId">Unique &#x60;id&#x60; of the Custom Authorization Server JSON Web Key</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ListJwk200ResponseInner</returns>
-        System.Threading.Tasks.Task<ListJwk200ResponseInner> ActivateOAuth2ClientJsonWebKeyAsync(  string appId ,   string keyId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of OAuth2ClientJsonWebKeyResponseBase</returns>
+        System.Threading.Tasks.Task<OAuth2ClientJsonWebKeyResponseBase> ActivateOAuth2ClientJsonWebKeyAsync(  string appId ,   string keyId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Activate an OAuth 2.0 client JSON Web Key
         /// </summary>
@@ -55,8 +55,8 @@ namespace Okta.Sdk.Api
         /// <param name="appId">Application ID</param>
         /// <param name="keyId">Unique &#x60;id&#x60; of the Custom Authorization Server JSON Web Key</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ListJwk200ResponseInner)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListJwk200ResponseInner>> ActivateOAuth2ClientJsonWebKeyWithHttpInfoAsync(  string appId ,   string keyId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (OAuth2ClientJsonWebKeyResponseBase)</returns>
+        System.Threading.Tasks.Task<ApiResponse<OAuth2ClientJsonWebKeyResponseBase>> ActivateOAuth2ClientJsonWebKeyWithHttpInfoAsync(  string appId ,   string keyId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Activate an OAuth 2.0 client secret
         /// </summary>
@@ -91,8 +91,8 @@ namespace Okta.Sdk.Api
         /// <param name="appId">Application ID</param>
         /// <param name="addJwkRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ListJwk200ResponseInner</returns>
-        System.Threading.Tasks.Task<ListJwk200ResponseInner> AddJwkAsync(  string appId ,   AddJwkRequest addJwkRequest , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of OAuth2ClientJsonWebKeyResponseBase</returns>
+        System.Threading.Tasks.Task<OAuth2ClientJsonWebKeyResponseBase> AddJwkAsync(  string appId ,   AddJwkRequest addJwkRequest , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Add a JSON Web Key
         /// </summary>
@@ -103,8 +103,8 @@ namespace Okta.Sdk.Api
         /// <param name="appId">Application ID</param>
         /// <param name="addJwkRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ListJwk200ResponseInner)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ListJwk200ResponseInner>> AddJwkWithHttpInfoAsync(  string appId ,   AddJwkRequest addJwkRequest , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (OAuth2ClientJsonWebKeyResponseBase)</returns>
+        System.Threading.Tasks.Task<ApiResponse<OAuth2ClientJsonWebKeyResponseBase>> AddJwkWithHttpInfoAsync(  string appId ,   AddJwkRequest addJwkRequest , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Create an OAuth 2.0 client secret
         /// </summary>
@@ -235,8 +235,8 @@ namespace Okta.Sdk.Api
         /// <param name="appId">Application ID</param>
         /// <param name="keyId">Unique &#x60;id&#x60; of the Custom Authorization Server JSON Web Key</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of GetJwk200Response</returns>
-        System.Threading.Tasks.Task<GetJwk200Response> GetJwkAsync(  string appId ,   string keyId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of OAuth2ClientJsonWebKeyResponseBase</returns>
+        System.Threading.Tasks.Task<OAuth2ClientJsonWebKeyResponseBase> GetJwkAsync(  string appId ,   string keyId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Retrieve an OAuth 2.0 client JSON Web Key
         /// </summary>
@@ -247,8 +247,8 @@ namespace Okta.Sdk.Api
         /// <param name="appId">Application ID</param>
         /// <param name="keyId">Unique &#x60;id&#x60; of the Custom Authorization Server JSON Web Key</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (GetJwk200Response)</returns>
-        System.Threading.Tasks.Task<ApiResponse<GetJwk200Response>> GetJwkWithHttpInfoAsync(  string appId ,   string keyId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (OAuth2ClientJsonWebKeyResponseBase)</returns>
+        System.Threading.Tasks.Task<ApiResponse<OAuth2ClientJsonWebKeyResponseBase>> GetJwkWithHttpInfoAsync(  string appId ,   string keyId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// Retrieve an OAuth 2.0 client secret
         /// </summary>
@@ -282,8 +282,8 @@ namespace Okta.Sdk.Api
         /// <exception cref="Okta.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">Application ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of List&lt;ListJwk200ResponseInner&gt;</returns>
-        IOktaCollectionClient<ListJwk200ResponseInner> ListJwk(  string appId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of List&lt;OAuth2ClientJsonWebKeyResponseBase&gt;</returns>
+        IOktaCollectionClient<OAuth2ClientJsonWebKeyResponseBase> ListJwk(  string appId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// List all the OAuth 2.0 client JSON Web Keys
         /// </summary>
@@ -293,8 +293,8 @@ namespace Okta.Sdk.Api
         /// <exception cref="Okta.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">Application ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (List&lt;ListJwk200ResponseInner&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<ListJwk200ResponseInner>>> ListJwkWithHttpInfoAsync(  string appId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (List&lt;OAuth2ClientJsonWebKeyResponseBase&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<OAuth2ClientJsonWebKeyResponseBase>>> ListJwkWithHttpInfoAsync(  string appId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// List all OAuth 2.0 client secrets
         /// </summary>
@@ -434,10 +434,10 @@ namespace Okta.Sdk.Api
         /// <param name="appId">Application ID</param>
         /// <param name="keyId">Unique &#x60;id&#x60; of the Custom Authorization Server JSON Web Key</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ListJwk200ResponseInner</returns>
-        public async System.Threading.Tasks.Task<ListJwk200ResponseInner> ActivateOAuth2ClientJsonWebKeyAsync(  string appId ,   string keyId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of OAuth2ClientJsonWebKeyResponseBase</returns>
+        public async System.Threading.Tasks.Task<OAuth2ClientJsonWebKeyResponseBase> ActivateOAuth2ClientJsonWebKeyAsync(  string appId ,   string keyId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Okta.Sdk.Client.ApiResponse<ListJwk200ResponseInner> localVarResponse = await ActivateOAuth2ClientJsonWebKeyWithHttpInfoAsync(appId, keyId, cancellationToken).ConfigureAwait(false);
+            Okta.Sdk.Client.ApiResponse<OAuth2ClientJsonWebKeyResponseBase> localVarResponse = await ActivateOAuth2ClientJsonWebKeyWithHttpInfoAsync(appId, keyId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
         /// <summary>
@@ -447,8 +447,8 @@ namespace Okta.Sdk.Api
         /// <param name="appId">Application ID</param>
         /// <param name="keyId">Unique &#x60;id&#x60; of the Custom Authorization Server JSON Web Key</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ListJwk200ResponseInner)</returns>
-        public async System.Threading.Tasks.Task<Okta.Sdk.Client.ApiResponse<ListJwk200ResponseInner>> ActivateOAuth2ClientJsonWebKeyWithHttpInfoAsync(  string appId ,   string keyId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (OAuth2ClientJsonWebKeyResponseBase)</returns>
+        public async System.Threading.Tasks.Task<Okta.Sdk.Client.ApiResponse<OAuth2ClientJsonWebKeyResponseBase>> ActivateOAuth2ClientJsonWebKeyWithHttpInfoAsync(  string appId ,   string keyId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -506,7 +506,7 @@ namespace Okta.Sdk.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<ListJwk200ResponseInner>("/api/v1/apps/{appId}/credentials/jwks/{keyId}/lifecycle/activate", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<OAuth2ClientJsonWebKeyResponseBase>("/api/v1/apps/{appId}/credentials/jwks/{keyId}/lifecycle/activate", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -620,10 +620,10 @@ namespace Okta.Sdk.Api
         /// <param name="appId">Application ID</param>
         /// <param name="addJwkRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ListJwk200ResponseInner</returns>
-        public async System.Threading.Tasks.Task<ListJwk200ResponseInner> AddJwkAsync(  string appId ,   AddJwkRequest addJwkRequest , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of OAuth2ClientJsonWebKeyResponseBase</returns>
+        public async System.Threading.Tasks.Task<OAuth2ClientJsonWebKeyResponseBase> AddJwkAsync(  string appId ,   AddJwkRequest addJwkRequest , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Okta.Sdk.Client.ApiResponse<ListJwk200ResponseInner> localVarResponse = await AddJwkWithHttpInfoAsync(appId, addJwkRequest, cancellationToken).ConfigureAwait(false);
+            Okta.Sdk.Client.ApiResponse<OAuth2ClientJsonWebKeyResponseBase> localVarResponse = await AddJwkWithHttpInfoAsync(appId, addJwkRequest, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
         /// <summary>
@@ -633,8 +633,8 @@ namespace Okta.Sdk.Api
         /// <param name="appId">Application ID</param>
         /// <param name="addJwkRequest"></param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (ListJwk200ResponseInner)</returns>
-        public async System.Threading.Tasks.Task<Okta.Sdk.Client.ApiResponse<ListJwk200ResponseInner>> AddJwkWithHttpInfoAsync(  string appId ,   AddJwkRequest addJwkRequest , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (OAuth2ClientJsonWebKeyResponseBase)</returns>
+        public async System.Threading.Tasks.Task<Okta.Sdk.Client.ApiResponse<OAuth2ClientJsonWebKeyResponseBase>> AddJwkWithHttpInfoAsync(  string appId ,   AddJwkRequest addJwkRequest , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -693,7 +693,7 @@ namespace Okta.Sdk.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.PostAsync<ListJwk200ResponseInner>("/api/v1/apps/{appId}/credentials/jwks", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.PostAsync<OAuth2ClientJsonWebKeyResponseBase>("/api/v1/apps/{appId}/credentials/jwks", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1172,10 +1172,10 @@ namespace Okta.Sdk.Api
         /// <param name="appId">Application ID</param>
         /// <param name="keyId">Unique &#x60;id&#x60; of the Custom Authorization Server JSON Web Key</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of GetJwk200Response</returns>
-        public async System.Threading.Tasks.Task<GetJwk200Response> GetJwkAsync(  string appId ,   string keyId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of OAuth2ClientJsonWebKeyResponseBase</returns>
+        public async System.Threading.Tasks.Task<OAuth2ClientJsonWebKeyResponseBase> GetJwkAsync(  string appId ,   string keyId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            Okta.Sdk.Client.ApiResponse<GetJwk200Response> localVarResponse = await GetJwkWithHttpInfoAsync(appId, keyId, cancellationToken).ConfigureAwait(false);
+            Okta.Sdk.Client.ApiResponse<OAuth2ClientJsonWebKeyResponseBase> localVarResponse = await GetJwkWithHttpInfoAsync(appId, keyId, cancellationToken).ConfigureAwait(false);
             return localVarResponse.Data;
         }
         /// <summary>
@@ -1185,8 +1185,8 @@ namespace Okta.Sdk.Api
         /// <param name="appId">Application ID</param>
         /// <param name="keyId">Unique &#x60;id&#x60; of the Custom Authorization Server JSON Web Key</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (GetJwk200Response)</returns>
-        public async System.Threading.Tasks.Task<Okta.Sdk.Client.ApiResponse<GetJwk200Response>> GetJwkWithHttpInfoAsync(  string appId ,   string keyId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (OAuth2ClientJsonWebKeyResponseBase)</returns>
+        public async System.Threading.Tasks.Task<Okta.Sdk.Client.ApiResponse<OAuth2ClientJsonWebKeyResponseBase>> GetJwkWithHttpInfoAsync(  string appId ,   string keyId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -1244,7 +1244,7 @@ namespace Okta.Sdk.Api
             }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<GetJwk200Response>("/api/v1/apps/{appId}/credentials/jwks/{keyId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<OAuth2ClientJsonWebKeyResponseBase>("/api/v1/apps/{appId}/credentials/jwks/{keyId}", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
@@ -1357,9 +1357,9 @@ namespace Okta.Sdk.Api
         /// <exception cref="Okta.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">Application ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of List&lt;ListJwk200ResponseInner&gt;</returns>
+        /// <returns>Task of List&lt;OAuth2ClientJsonWebKeyResponseBase&gt;</returns>
         //a
-        public IOktaCollectionClient<ListJwk200ResponseInner> ListJwk(  string appId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        public IOktaCollectionClient<OAuth2ClientJsonWebKeyResponseBase> ListJwk(  string appId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -1406,7 +1406,7 @@ namespace Okta.Sdk.Api
             
             // If AuthorizationMode is equals to PrivateKey, the authorization header is set in the enumerator for collections.
             
-            return new OktaCollectionClient<ListJwk200ResponseInner>(localVarRequestOptions, "/api/v1/apps/{appId}/credentials/jwks", this.AsynchronousClient, this.Configuration, this._oAuthTokenProvider);
+            return new OktaCollectionClient<OAuth2ClientJsonWebKeyResponseBase>(localVarRequestOptions, "/api/v1/apps/{appId}/credentials/jwks", this.AsynchronousClient, this.Configuration, this._oAuthTokenProvider);
         }
         /// <summary>
         /// List all the OAuth 2.0 client JSON Web Keys Lists all JSON Web Keys for an OAuth 2.0 client app
@@ -1414,8 +1414,8 @@ namespace Okta.Sdk.Api
         /// <exception cref="Okta.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">Application ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (List&lt;ListJwk200ResponseInner&gt;)</returns>
-        public async System.Threading.Tasks.Task<Okta.Sdk.Client.ApiResponse<List<ListJwk200ResponseInner>>> ListJwkWithHttpInfoAsync(  string appId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (List&lt;OAuth2ClientJsonWebKeyResponseBase&gt;)</returns>
+        public async System.Threading.Tasks.Task<Okta.Sdk.Client.ApiResponse<List<OAuth2ClientJsonWebKeyResponseBase>>> ListJwkWithHttpInfoAsync(  string appId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -1463,7 +1463,7 @@ namespace Okta.Sdk.Api
             // If AuthorizationMode is equals to PrivateKey, the authorization header is set in the enumerator for collections.
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<List<ListJwk200ResponseInner>>("/api/v1/apps/{appId}/credentials/jwks", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<List<OAuth2ClientJsonWebKeyResponseBase>>("/api/v1/apps/{appId}/credentials/jwks", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {

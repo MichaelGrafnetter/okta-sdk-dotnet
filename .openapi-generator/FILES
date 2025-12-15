@@ -575,7 +575,6 @@ docs/FipsEnum.md
 docs/ForgotPasswordResponse.md
 docs/FulfillmentDataOrderDetails.md
 docs/FulfillmentRequest.md
-docs/GetJwk200Response.md
 docs/GoogleApplication.md
 docs/GoogleApplicationSettings.md
 docs/GoogleApplicationSettingsApplication.md
@@ -842,7 +841,6 @@ docs/LinksUserRef.md
 docs/LinksUserUser.md
 docs/LinksVerify.md
 docs/LinksVerifyVerify.md
-docs/ListJwk200ResponseInner.md
 docs/ListProfileMappings.md
 docs/ListSubscriptionsRoleRoleRefParameter.md
 docs/LoadingPageTouchPointVariant.md
@@ -915,7 +913,6 @@ docs/OAuth2ClaimType.md
 docs/OAuth2ClaimValueType.md
 docs/OAuth2Client.md
 docs/OAuth2ClientJsonEncryptionKeyRequest.md
-docs/OAuth2ClientJsonEncryptionKeyResponse.md
 docs/OAuth2ClientJsonSigningKeyRequest.md
 docs/OAuth2ClientJsonSigningKeyResponse.md
 docs/OAuth2ClientJsonWebKeyECRequest.md
@@ -2537,7 +2534,6 @@ src/Okta.Sdk/Model/FipsEnum.cs
 src/Okta.Sdk/Model/ForgotPasswordResponse.cs
 src/Okta.Sdk/Model/FulfillmentDataOrderDetails.cs
 src/Okta.Sdk/Model/FulfillmentRequest.cs
-src/Okta.Sdk/Model/GetJwk200Response.cs
 src/Okta.Sdk/Model/GoogleApplication.cs
 src/Okta.Sdk/Model/GoogleApplicationSettings.cs
 src/Okta.Sdk/Model/GoogleApplicationSettingsApplication.cs
@@ -2792,7 +2788,6 @@ src/Okta.Sdk/Model/LinksUserRef.cs
 src/Okta.Sdk/Model/LinksUserUser.cs
 src/Okta.Sdk/Model/LinksVerify.cs
 src/Okta.Sdk/Model/LinksVerifyVerify.cs
-src/Okta.Sdk/Model/ListJwk200ResponseInner.cs
 src/Okta.Sdk/Model/ListProfileMappings.cs
 src/Okta.Sdk/Model/ListSubscriptionsRoleRoleRefParameter.cs
 src/Okta.Sdk/Model/LoadingPageTouchPointVariant.cs
@@ -2863,7 +2858,6 @@ src/Okta.Sdk/Model/OAuth2ClaimType.cs
 src/Okta.Sdk/Model/OAuth2ClaimValueType.cs
 src/Okta.Sdk/Model/OAuth2Client.cs
 src/Okta.Sdk/Model/OAuth2ClientJsonEncryptionKeyRequest.cs
-src/Okta.Sdk/Model/OAuth2ClientJsonEncryptionKeyResponse.cs
 src/Okta.Sdk/Model/OAuth2ClientJsonSigningKeyRequest.cs
 src/Okta.Sdk/Model/OAuth2ClientJsonSigningKeyResponse.cs
 src/Okta.Sdk/Model/OAuth2ClientJsonWebKeyECRequest.cs
