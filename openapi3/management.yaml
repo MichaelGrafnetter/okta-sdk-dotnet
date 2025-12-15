@@ -66892,13 +66892,6 @@ components:
         - $ref: '#/components/schemas/OAuth2ClientJsonWebKeyResponseBase'
       type: object
       properties:
-        kty:
-          type: string
-          description: Cryptographic algorithm family for the certificate's key pair
-          example: EC
-          nullable: false
-          enum:
-            - EC
         x:
           type: string
           description: The public x coordinate for the elliptic curve point
@@ -66976,6 +66969,8 @@ components:
         mapping:
           RSA: '#/components/schemas/OAuth2ClientJsonWebKeyRsaResponse'
           EC: '#/components/schemas/OAuth2ClientJsonWebKeyECResponse'
+      required:
+        - kty
       properties:
         created:
           type: string
@@ -67061,13 +67056,6 @@ components:
           description: RSA key value (exponent) for key binding
           example: AQAB
           nullable: false
-        kty:
-          type: string
-          description: Cryptographic algorithm family for the certificate's key pair
-          example: RSA
-          nullable: false
-          enum:
-            - RSA
         'n':
           type: string
           description: RSA key value (modulus) for key binding

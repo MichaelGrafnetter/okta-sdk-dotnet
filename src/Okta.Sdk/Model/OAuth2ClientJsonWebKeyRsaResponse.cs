@@ -43,43 +43,10 @@ namespace Okta.Sdk.Model
     public partial class OAuth2ClientJsonWebKeyRsaResponse : OAuth2ClientJsonWebKeyResponseBase, IEquatable<OAuth2ClientJsonWebKeyRsaResponse>
     {
         /// <summary>
-        /// Cryptographic algorithm family for the certificate&#39;s key pair
+        /// Initializes a new instance of the <see cref="OAuth2ClientJsonWebKeyRsaResponse" /> class.
         /// </summary>
-        /// <value>Cryptographic algorithm family for the certificate&#39;s key pair</value>
-        [JsonConverter(typeof(StringEnumSerializingConverter))]
-        public sealed class KtyEnum : StringEnum
-        {
-            /// <summary>
-            /// StringEnum RSA for value: RSA
-            /// </summary>
-            
-            public static KtyEnum RSA = new KtyEnum("RSA");
-
-
-            /// <summary>
-            /// Implicit operator declaration to accept and convert a string value as a <see cref="KtyEnum"/>
-            /// </summary>
-            /// <param name="value">The value to use</param>
-            public static implicit operator KtyEnum(string value) => new KtyEnum(value);
-
-            /// <summary>
-            /// Creates a new <see cref="Kty"/> instance.
-            /// </summary>
-            /// <param name="value">The value to use.</param>
-            public KtyEnum(string value)
-                : base(value)
-            {
-            }
-        }
-
-
-        /// <summary>
-        /// Cryptographic algorithm family for the certificate&#39;s key pair
-        /// </summary>
-        /// <value>Cryptographic algorithm family for the certificate&#39;s key pair</value>
-        [DataMember(Name = "kty", EmitDefaultValue = true)]
-        
-        public KtyEnum Kty { get; set; }
+        [JsonConstructorAttribute]
+        public OAuth2ClientJsonWebKeyRsaResponse() { }
         
         /// <summary>
         /// RSA key value (exponent) for key binding
@@ -105,7 +72,6 @@ namespace Okta.Sdk.Model
             sb.Append("class OAuth2ClientJsonWebKeyRsaResponse {\n");
             sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
             sb.Append("  E: ").Append(E).Append("\n");
-            sb.Append("  Kty: ").Append(Kty).Append("\n");
             sb.Append("  N: ").Append(N).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -148,10 +114,6 @@ namespace Okta.Sdk.Model
                     this.E.Equals(input.E))
                 ) && base.Equals(input) && 
                 (
-                    this.Kty == input.Kty ||
-                    this.Kty.Equals(input.Kty)
-                ) && base.Equals(input) && 
-                (
                     this.N == input.N ||
                     (this.N != null &&
                     this.N.Equals(input.N))
@@ -171,10 +133,6 @@ namespace Okta.Sdk.Model
                 if (this.E != null)
                 {
                     hashCode = (hashCode * 59) + this.E.GetHashCode();
-                }
-                if (this.Kty != null)
-                {
-                    hashCode = (hashCode * 59) + this.Kty.GetHashCode();
                 }
                 if (this.N != null)
                 {

@@ -43,43 +43,10 @@ namespace Okta.Sdk.Model
     public partial class OAuth2ClientJsonWebKeyECResponse : OAuth2ClientJsonWebKeyResponseBase, IEquatable<OAuth2ClientJsonWebKeyECResponse>
     {
         /// <summary>
-        /// Cryptographic algorithm family for the certificate&#39;s key pair
+        /// Initializes a new instance of the <see cref="OAuth2ClientJsonWebKeyECResponse" /> class.
         /// </summary>
-        /// <value>Cryptographic algorithm family for the certificate&#39;s key pair</value>
-        [JsonConverter(typeof(StringEnumSerializingConverter))]
-        public sealed class KtyEnum : StringEnum
-        {
-            /// <summary>
-            /// StringEnum EC for value: EC
-            /// </summary>
-            
-            public static KtyEnum EC = new KtyEnum("EC");
-
-
-            /// <summary>
-            /// Implicit operator declaration to accept and convert a string value as a <see cref="KtyEnum"/>
-            /// </summary>
-            /// <param name="value">The value to use</param>
-            public static implicit operator KtyEnum(string value) => new KtyEnum(value);
-
-            /// <summary>
-            /// Creates a new <see cref="Kty"/> instance.
-            /// </summary>
-            /// <param name="value">The value to use.</param>
-            public KtyEnum(string value)
-                : base(value)
-            {
-            }
-        }
-
-
-        /// <summary>
-        /// Cryptographic algorithm family for the certificate&#39;s key pair
-        /// </summary>
-        /// <value>Cryptographic algorithm family for the certificate&#39;s key pair</value>
-        [DataMember(Name = "kty", EmitDefaultValue = true)]
-        
-        public KtyEnum Kty { get; set; }
+        [JsonConstructorAttribute]
+        public OAuth2ClientJsonWebKeyECResponse() { }
         
         /// <summary>
         /// The public x coordinate for the elliptic curve point
@@ -104,7 +71,6 @@ namespace Okta.Sdk.Model
             StringBuilder sb = new StringBuilder();
             sb.Append("class OAuth2ClientJsonWebKeyECResponse {\n");
             sb.Append("  ").Append(base.ToString().Replace("\n", "\n  ")).Append("\n");
-            sb.Append("  Kty: ").Append(Kty).Append("\n");
             sb.Append("  X: ").Append(X).Append("\n");
             sb.Append("  Y: ").Append(Y).Append("\n");
             sb.Append("}\n");
@@ -143,10 +109,6 @@ namespace Okta.Sdk.Model
             }
             return base.Equals(input) && 
                 (
-                    this.Kty == input.Kty ||
-                    this.Kty.Equals(input.Kty)
-                ) && base.Equals(input) && 
-                (
                     this.X == input.X ||
                     (this.X != null &&
                     this.X.Equals(input.X))
@@ -168,10 +130,6 @@ namespace Okta.Sdk.Model
             {
                 int hashCode = base.GetHashCode();
                 
-                if (this.Kty != null)
-                {
-                    hashCode = (hashCode * 59) + this.Kty.GetHashCode();
-                }
                 if (this.X != null)
                 {
                     hashCode = (hashCode * 59) + this.X.GetHashCode();

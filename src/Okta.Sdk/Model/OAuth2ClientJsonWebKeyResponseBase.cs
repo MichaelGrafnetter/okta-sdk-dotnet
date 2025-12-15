@@ -176,6 +176,11 @@ namespace Okta.Sdk.Model
         [DataMember(Name = "use", EmitDefaultValue = true)]
         
         public UseEnum Use { get; set; }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OAuth2ClientJsonWebKeyResponseBase" /> class.
+        /// </summary>
+        [JsonConstructorAttribute]
+        public OAuth2ClientJsonWebKeyResponseBase() { }
         
         /// <summary>
         /// Timestamp when the OAuth 2.0 client JSON Web Key was created
