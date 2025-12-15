@@ -842,7 +842,7 @@ Name | Type | Description  | Notes
 
 <a name="listjwk"></a>
 # **ListJwk**
-> List&lt;OAuth2ClientJsonWebKeyResponseBase&gt; ListJwk (string appId)
+> OpenIdConnectApplicationSettingsClientKeys ListJwk (string appId)
 
 List all the OAuth 2.0 client JSON Web Keys
 
@@ -875,7 +875,7 @@ namespace Example
             try
             {
                 // List all the OAuth 2.0 client JSON Web Keys
-                List<OAuth2ClientJsonWebKeyResponseBase> result = apiInstance.ListJwk(appId).ToListAsync();
+                OpenIdConnectApplicationSettingsClientKeys result = apiInstance.ListJwk(appId);
                 Debug.WriteLine(result);
             }
             catch (ApiException  e)
@@ -897,7 +897,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**List&lt;OAuth2ClientJsonWebKeyResponseBase&gt;**](OAuth2ClientJsonWebKeyResponseBase.md)
+[**OpenIdConnectApplicationSettingsClientKeys**](OpenIdConnectApplicationSettingsClientKeys.md)
 
 ### Authorization
 

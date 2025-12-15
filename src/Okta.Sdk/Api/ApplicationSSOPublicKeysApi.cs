@@ -282,8 +282,8 @@ namespace Okta.Sdk.Api
         /// <exception cref="Okta.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">Application ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of List&lt;OAuth2ClientJsonWebKeyResponseBase&gt;</returns>
-        IOktaCollectionClient<OAuth2ClientJsonWebKeyResponseBase> ListJwk(  string appId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of OpenIdConnectApplicationSettingsClientKeys</returns>
+        System.Threading.Tasks.Task<OpenIdConnectApplicationSettingsClientKeys> ListJwkAsync(  string appId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// List all the OAuth 2.0 client JSON Web Keys
         /// </summary>
@@ -293,8 +293,8 @@ namespace Okta.Sdk.Api
         /// <exception cref="Okta.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">Application ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (List&lt;OAuth2ClientJsonWebKeyResponseBase&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<OAuth2ClientJsonWebKeyResponseBase>>> ListJwkWithHttpInfoAsync(  string appId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
+        /// <returns>Task of ApiResponse (OpenIdConnectApplicationSettingsClientKeys)</returns>
+        System.Threading.Tasks.Task<ApiResponse<OpenIdConnectApplicationSettingsClientKeys>> ListJwkWithHttpInfoAsync(  string appId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken));
         /// <summary>
         /// List all OAuth 2.0 client secrets
         /// </summary>
@@ -1357,56 +1357,11 @@ namespace Okta.Sdk.Api
         /// <exception cref="Okta.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">Application ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of List&lt;OAuth2ClientJsonWebKeyResponseBase&gt;</returns>
-        //a
-        public IOktaCollectionClient<OAuth2ClientJsonWebKeyResponseBase> ListJwk(  string appId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of OpenIdConnectApplicationSettingsClientKeys</returns>
+        public async System.Threading.Tasks.Task<OpenIdConnectApplicationSettingsClientKeys> ListJwkAsync(  string appId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
-            // verify the required parameter 'appId' is set
-            if (appId == null)
-            {
-                throw new Okta.Sdk.Client.ApiException(400, "Missing required parameter 'appId' when calling ApplicationSSOPublicKeysApi->ListJwk");
-            }
-
-
-            Okta.Sdk.Client.RequestOptions localVarRequestOptions = new Okta.Sdk.Client.RequestOptions();
-
-            string[] _contentTypes = new string[] {
-            };
-
-            // to determine the Accept header
-            string[] _accepts = new string[] {
-                "application/json"
-            };
-
-            var localVarContentType = Okta.Sdk.Client.ClientUtils.SelectHeaderContentType(_contentTypes);
-            if (localVarContentType != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Content-Type", localVarContentType);
-            }
-
-            var localVarAccept = Okta.Sdk.Client.ClientUtils.SelectHeaderAccept(_accepts);
-            if (localVarAccept != null)
-            {
-                localVarRequestOptions.HeaderParameters.Add("Accept", localVarAccept);
-            }
-
-            localVarRequestOptions.PathParameters.Add("appId", Okta.Sdk.Client.ClientUtils.ParameterToString(appId)); // path parameter
-
-            // authentication (apiToken) required
-            if (Sdk.Client.Configuration.IsSswsMode(this.Configuration) && !string.IsNullOrEmpty(this.Configuration.GetApiKeyWithPrefix("Authorization")))
-            {
-                localVarRequestOptions.HeaderParameters.Add("Authorization", this.Configuration.GetApiKeyWithPrefix("Authorization"));
-            }
-            // authentication (oauth2) required
-            // oauth required
-            if (Sdk.Client.Configuration.IsBearerTokenMode(this.Configuration) && !string.IsNullOrEmpty(this.Configuration.AccessToken) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
-            {
-                localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
-            }
-            
-            // If AuthorizationMode is equals to PrivateKey, the authorization header is set in the enumerator for collections.
-            
-            return new OktaCollectionClient<OAuth2ClientJsonWebKeyResponseBase>(localVarRequestOptions, "/api/v1/apps/{appId}/credentials/jwks", this.AsynchronousClient, this.Configuration, this._oAuthTokenProvider);
+            Okta.Sdk.Client.ApiResponse<OpenIdConnectApplicationSettingsClientKeys> localVarResponse = await ListJwkWithHttpInfoAsync(appId, cancellationToken).ConfigureAwait(false);
+            return localVarResponse.Data;
         }
         /// <summary>
         /// List all the OAuth 2.0 client JSON Web Keys Lists all JSON Web Keys for an OAuth 2.0 client app
@@ -1414,8 +1369,8 @@ namespace Okta.Sdk.Api
         /// <exception cref="Okta.Sdk.Client.ApiException">Thrown when fails to make API call</exception>
         /// <param name="appId">Application ID</param>
         /// <param name="cancellationToken">Cancellation Token to cancel the request.</param>
-        /// <returns>Task of ApiResponse (List&lt;OAuth2ClientJsonWebKeyResponseBase&gt;)</returns>
-        public async System.Threading.Tasks.Task<Okta.Sdk.Client.ApiResponse<List<OAuth2ClientJsonWebKeyResponseBase>>> ListJwkWithHttpInfoAsync(  string appId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
+        /// <returns>Task of ApiResponse (OpenIdConnectApplicationSettingsClientKeys)</returns>
+        public async System.Threading.Tasks.Task<Okta.Sdk.Client.ApiResponse<OpenIdConnectApplicationSettingsClientKeys>> ListJwkWithHttpInfoAsync(  string appId , System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken))
         {
             // verify the required parameter 'appId' is set
             if (appId == null)
@@ -1460,10 +1415,13 @@ namespace Okta.Sdk.Api
                 localVarRequestOptions.HeaderParameters.Add("Authorization", "Bearer " + this.Configuration.AccessToken);
             }
             
-            // If AuthorizationMode is equals to PrivateKey, the authorization header is set in the enumerator for collections.
+            if (Sdk.Client.Configuration.IsPrivateKeyMode(this.Configuration) && !localVarRequestOptions.HeaderParameters.ContainsKey("Authorization"))
+            {
+                await _oAuthTokenProvider.AddOrUpdateAuthorizationHeader(localVarRequestOptions, $"/api/v1/apps/{appId}/credentials/jwks", "GET", cancellationToken = default);
+            }
 
             // make the HTTP request
-            var localVarResponse = await this.AsynchronousClient.GetAsync<List<OAuth2ClientJsonWebKeyResponseBase>>("/api/v1/apps/{appId}/credentials/jwks", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
+            var localVarResponse = await this.AsynchronousClient.GetAsync<OpenIdConnectApplicationSettingsClientKeys>("/api/v1/apps/{appId}/credentials/jwks", localVarRequestOptions, this.Configuration, cancellationToken).ConfigureAwait(false);
 
             if (this.ExceptionFactory != null)
             {
